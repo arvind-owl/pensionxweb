@@ -467,13 +467,15 @@
                 $(".wrap-sticky").height(getHeight);
                 
                 // Windown on scroll
-                var getOffset = $(".wrap-sticky").offset().top;
+                var getOffset = 10;
                 $(window).on("scroll", function(){  
                     var scrollTop = $(window).scrollTop();
                     if(scrollTop > getOffset){
                         getNav.addClass("sticked");
+						$("#header").addClass("stickyHeader");
                     }else {
                         getNav.removeClass("sticked");
+						$("#header").removeClass("stickyHeader");
                     }
                 });
             }   
@@ -573,6 +575,6 @@
         $(".navbar-collapse").removeClass("on");
         $(".navbar-collapse").removeClass("bounceIn");      
     });
-    
+	  
 }(jQuery));
 
