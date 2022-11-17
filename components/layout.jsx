@@ -3,6 +3,10 @@ import { Header, Footer } from '@pantheon-systems/nextjs-kit';
 export default function Layout({ children, footerMenu }) {
 	const navItems = [
 		{
+			linkText: '<img src="test" />',
+			href: '/',
+		},
+		{
 			linkText: '🏠 Home',
 			href: '/',
 		},

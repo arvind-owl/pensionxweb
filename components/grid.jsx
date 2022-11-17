@@ -12,7 +12,7 @@ export const PostGridItem = ({ content: post }) => {
 	const altText = post?.featuredImage?.node.altText || post.title;
 
 	return (
-		<Link passHref href={`/posts${post.uri}`}>
+		<Link passHref href={`/posts${post.slug}`}>
 			<a>
 				<div className="flex flex-col rounded-lg shadow-lg overflow-hidden cursor-pointer border-2 h-full hover:border-indigo-500">
 					<div className="flex-shrink-0 relative h-40">
@@ -41,7 +41,7 @@ export const PageGridItem = ({ content: page }) => {
 	const altText = page?.featuredImage?.node.altText || page.title;
 
 	return (
-		<Link passHref href={`/pages/${page.uri}`}>
+		<Link passHref href={`/pages/${page.slug}`}>
 			<a>
 				<div className="flex flex-col rounded-lg shadow-lg overflow-hidden cursor-pointer border-2 h-full hover:border-indigo-500">
 					<div className="flex-shrink-0 relative h-40">
