@@ -143,6 +143,7 @@ jQuery(function($) {
             "<i class='fa fa-angle-left'></i>",
             "<i class='fa fa-angle-right'></i>"
         ],
+		itemsDesktop: [1920, 3],
         itemsDesktopSmall: [1024, 2],
         itemsTablet: [768, 2],
         itemsMobile: [479, 1],
@@ -178,7 +179,7 @@ jQuery(function($) {
             cols: 3
         }, {
             width: 800,
-            cols: 3
+            cols: 2
         }, {
             width: 480,
             cols: 2

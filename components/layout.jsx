@@ -1,11 +1,9 @@
-import { Header, Footer } from '@pantheon-systems/nextjs-kit';
-
+import  Header from 'header';
+import Loader from 'loader';
+import HeaderTop from 'headerTop';
 export default function Layout({ children, footerMenu }) {
 	const navItems = [
-		{
-			linkText: '<img src="test" />',
-			href: '/',
-		},
+		
 		{
 			linkText: '🏠 Home',
 			href: '/',
@@ -32,7 +30,10 @@ export default function Layout({ children, footerMenu }) {
 
 	return (
 		<div className="min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col">
-			<Header navItems={navItems} />
+			<Loader />
+			<HeaderTop />
+			<Header headerMenu={footerMenuItems} />
+			
 			<main className="mb-auto">{children}</main>
 			<Footer footerMenuItems={footerMenuItems}>
 				<span className="mx-auto">
