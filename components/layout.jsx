@@ -1,7 +1,9 @@
-import  Header from 'header';
-import Loader from 'loader';
-import HeaderTop from 'headerTop';
-export default function Layout({ children, footerMenu }) {
+import  Header from './header';
+import Loader from './loader';
+import HeaderTop from './headerTop';
+import Slider from './slider';
+import Footer from './footer';
+export default function Layout({ children, footerMenu, headerMenu }) {
 	const navItems = [
 		
 		{
@@ -22,18 +24,23 @@ export default function Layout({ children, footerMenu }) {
 		},
 	];
 
-	const footerMenuItems = footerMenu?.map(({ path, label }) => ({
+	const headerMenuItems = headerMenu && headerMenu?.map(({ path, label }) => ({
 		linkText: label,
 		href: path,
 		parent: null,
 	}));
-
+	const footerMenuItems = footerMenu && footerMenu?.map(({ path, label }) => ({
+		linkText: label,
+		href: path,
+		parent: null,
+	}));
 	return (
+		<>
 		<div className="min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col">
 			<Loader />
 			<HeaderTop />
-			<Header headerMenu={footerMenuItems} />
-			
+			<Header headerMenu={headerMenuItems} />
+			<Slider />
 			<main className="mb-auto">{children}</main>
 			<Footer footerMenuItems={footerMenuItems}>
 				<span className="mx-auto">
@@ -54,5 +61,5 @@ export default function Layout({ children, footerMenu }) {
 				</span>
 			</Footer>
 		</div>
-	);
+		 </>);
 }
