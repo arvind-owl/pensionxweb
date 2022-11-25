@@ -1033,7 +1033,7 @@ nav.navbar.bootsnav
 /*** Slider - 9 ***/
 #banner-nin {
   padding: 20% 0 15%;
-  background: url(../images/banner-9.jpg);
+  /* background: url(../images/banner-9.jpg); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;

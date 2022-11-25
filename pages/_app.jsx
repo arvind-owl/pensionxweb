@@ -1,4 +1,12 @@
-//import '../styles/globals.css';
+import '../public/css/bootsnav.css';
+import '../public/css/animate.min.css';
+import '../public/css/bootstrap.min.css';
+import '../public/css/font-awesome.min.css';
+import '../public/css/cubeportfolio.min.css';
+import '../public/css/owl.carousel.css';
+import '../public/css/style.css';
+import '../public/css/owl.transitions.css';
+import '../public/img/short_icon.png';
 import Script from 'next/script'
 import Link from 'next/link'
 import '@pantheon-systems/nextjs-kit/style.css';
@@ -15,18 +23,8 @@ function MyApp({ Component, pageProps }) {
 		 <Script src="/js/cubeportfolio.min.js" />
 		 <Script src="/js/wow.min.js" />
 		 <Script src="/js/jquery.themepunch.revolution.min.js" />
-		 <Script src="/js/revolution.extension.video.min.js" />
+		<Script src="/js/revolution.extension.video.min.js" /> 
 		 <Script src="/js/functions.js" />
-		 <Link rel="shortcut icon" href="/img/short_icon.png" />
-		 <Link rel="stylesheet" type="text/css" href="/css/bootsnav.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/animate.min.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/font-awesome.min.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/cubeportfolio.min.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/owl.carousel.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/owl.transitions.css" />
-		 <Link rel="stylesheet" type="text/css" href="/css/style.css" />
-		
 		 </>);
 }
 
