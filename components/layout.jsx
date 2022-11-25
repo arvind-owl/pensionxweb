@@ -18,11 +18,11 @@ export default function Layout({ children, footerMenu, headerMenu }) {
 	return (
 		<>
 		<div className="min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col">
-			<Loader />
+			{/* <Loader /> */}
 			<HeaderTop />
 			<Header headerMenu={headerMenuItems} />
 			<main className="mb-auto">{children}</main>
-			<Footer footerMenuItems={footerMenuItems}>
+			<Footer headerMenu={footerMenuItems}>
 				<span className="mx-auto">
 					© {new Date().getFullYear()} Built with{' '}
 					<a
