@@ -8,10 +8,10 @@ import { withGrid } from '@pantheon-systems/nextjs-kit';
 import { getFooterMenu } from '../../lib/Menus';
 import { getLatestPosts } from '../../lib/Posts';
 
-export default function SSGISRExampleTemplate({ menuItems, posts }) {
+export default function SSGISRExampleTemplate({  posts }) {
 	const PostGrid = withGrid(PostGridItem);
 	return (
-		<Layout footerMenu={menuItems}>
+		<Layout >
 			<NextSeo
 			title="SDCERA"
 			description="San Diego Couty Employees Retirement Association"
@@ -35,12 +35,12 @@ export default function SSGISRExampleTemplate({ menuItems, posts }) {
 }
 
 export async function getStaticProps() {
-	const menuItems = await getFooterMenu();
+	//const menuItems = await getFooterMenu();
 	const posts = await getLatestPosts(100);
 
 	return {
 		props: {
-			menuItems,
+			//menuItems,
 			posts,
 		},
 		revalidate: 60,
