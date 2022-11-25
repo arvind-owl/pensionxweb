@@ -1,28 +1,9 @@
 import  Header from './header';
 import Loader from './loader';
 import HeaderTop from './headerTop';
-import Slider from './slider';
 import Footer from './footer';
 export default function Layout({ children, footerMenu, headerMenu }) {
-	const navItems = [
-		
-		{
-			linkText: '🏠 Home',
-			href: '/',
-		},
-		{
-			linkText: '📰 Posts',
-			href: '/posts',
-		},
-		{
-			linkText: '📑 Pages',
-			href: '/pages',
-		},
-		{
-			linkText: '⚛️ Examples',
-			href: '/examples',
-		},
-	];
+	
 
 	const headerMenuItems = headerMenu && headerMenu?.map(({ path, label }) => ({
 		linkText: label,
@@ -40,7 +21,6 @@ export default function Layout({ children, footerMenu, headerMenu }) {
 			<Loader />
 			<HeaderTop />
 			<Header headerMenu={headerMenuItems} />
-			<Slider />
 			<main className="mb-auto">{children}</main>
 			<Footer footerMenuItems={footerMenuItems}>
 				<span className="mx-auto">
