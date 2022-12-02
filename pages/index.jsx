@@ -385,7 +385,7 @@ let date = dat.substring(6);
               <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.how_much_content,
               }} />
-							<Link href={banner?.acf?.how_much_button_link?banner?.acf?.how_much_button_link:"#"} className="Check-it-out">{banner?.acf?.how_much_button}</Link>
+							<Link passHref href={banner?.acf?.how_much_button_link?banner?.acf?.how_much_button_link:"#"} className="Check-it-out"><a>{banner && banner.acf && banner.acf.how_much_button?banner.acf.how_much_button:"#"}</a></Link>
 						</div>
 					</div>
 				</div>
@@ -433,7 +433,7 @@ let date = dat.substring(6);
                                         }) } <span className="bullet-circle">•</span> {post?.date} </p>
                                         
                                         <h3>
-                                          <Link href={post?.slug}>{post?.title}</Link>
+                                          <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
                                         </h3>
                                       </div>
                                     </div>
@@ -465,7 +465,7 @@ let date = dat.substring(6);
                                              } 
                                         }) }<span className="bullet-circle">•</span>{post?.date} </h5>
                   <h3>
-                  <Link href={post?.slug}>{post?.title}</Link>
+                  <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
                   </h3>
                 </div>
               </div>
@@ -628,13 +628,13 @@ let date = dat.substring(6);
             <h6>{banner?.acf?.life_event_title}</h6>
             <h3>{banner?.acf?.life_event_sub_title}</h3>
             <p>{banner?.acf?.life_event_content}</p>
-            <Link href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="desktop-only view-more-btn">{banner?.acf?.life_event_button_text}</Link>
+            <Link href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="desktop-only view-more-btn">{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</Link>
           </div>
           <div className="col-md-6 col-lg-5">
           <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.life_event_extra_content,
               }} />
-              <Link href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="mobile-only view-more-btn">{banner?.acf?.life_event_button_text}</Link>
+              <Link passHref href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="mobile-only view-more-btn"><a>{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</a></Link>
           
           </div>
         </div>

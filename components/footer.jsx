@@ -26,7 +26,7 @@ export default function Footer({ children, footerMenuItems }) {
                         <ul className="list angle-double-right list-border">
                             {footerMenuItems && footerMenuItems.length > 0 && footerMenuItems.map((menu,index)=>{
                                 return (<li key={index}>
-                                    <Link href={'/pages'+menu.href}>{menu.linkText}</Link>
+                                    <Link passHref href={'/pages'+menu.href}><a>{menu.linkText?menu.linkText:'#'}</a></Link>
                                     </li>);
                             })}
                         </ul>
@@ -36,7 +36,7 @@ export default function Footer({ children, footerMenuItems }) {
                         <div className="widget dark">
                         <h4 className="widget-title">Didn&apos;t find what you were looking for?</h4>
                         <h3>
-                            <Link href="/pages/contact">Leave us Feedback</Link>
+                            <Link passHref href="/pages/contact"><a>Leave us Feedback</a></Link>
                         </h3>
                         </div>
                     </div>

@@ -168,12 +168,12 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 			{subMenuData && subMenuData.length > 0 ? subMenuData && subMenuData[0] && subMenuData.map((sub, i) => {
 								return (
 								  <li key={i}>
-								  <Link
+								  <Link passHref
 									className="d-block"
 									href={'/'+sub?.object+'/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
-									{sub.title}
+									<a>{sub.title?sub.title:'#'}</a>
 								  </Link>
 								  {sub.submenu && sub.submenu.length > 0 ?
 								  <div className="d-flex flex-column ">
@@ -181,12 +181,12 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 								  {sub.submenu.map((subsub, i) => {
 									return (
 									  <li key={i}>
-									  <Link
+									  <Link passHref
 										className="d-block text-white HeaderDropDownListItem "
 										href={'/'+subsub?.object+'/'+getUrlSlug(subsub?.url)}
 										key={i}
 									  >
-										{subsub.title}
+										<a>{subsub.title?subsub.title:'#'}</a>
 									  </Link>
 									  </li>
 									);
@@ -231,7 +231,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                 {
                 return(
                     <>
-                    <Link href={item.url?item.url:'/'} className="AsideCardsMain" >
+                    <Link passHref href={item.url?item.url:'/'} className="AsideCardsMain" ><a>
                     <div className="col ">
                         { item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }
                     <div className="AsideCards" style={{'background':item.background_color?item.background_color:''}}>
@@ -239,6 +239,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                         <p dangerouslySetInnerHTML={createMarkup(item.description)} />
                     </div>
                 </div>
+				</a>
                 </Link>
                 </>
                 );
