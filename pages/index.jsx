@@ -323,7 +323,7 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-
+console.log(postsData);
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
@@ -385,13 +385,13 @@ let date = dat.substring(6);
               <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.how_much_content,
               }} />
-							<Link passHref href={banner?.acf?.how_much_button_link?banner?.acf?.how_much_button_link:"#"} className="Check-it-out"><a>{banner && banner.acf && banner.acf.how_much_button?banner.acf.how_much_button:"#"}</a></Link>
+							<Link passHref href={banner?.acf?.how_much_button_link?banner?.acf?.how_much_button_link:"#"} className="Check-it-out"><a className="Check-it-out">{banner && banner.acf && banner.acf.how_much_button?banner.acf.how_much_button:"#"}</a></Link>
 						</div>
 					</div>
 				</div>
 				<div className="col-lg-7 desktop-only">
 					<div className="thumb">
-						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} alt="img" />
+						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} style={{maxWidth:'1920px'}}alt="img" />
 					</div>
 				</div>
       		</div>
@@ -424,7 +424,7 @@ let date = dat.substring(6);
                                         <p>{post?.categories.length > 0 && post?.categories.map((cat,index)=>{
                                              if(index==0)
                                              {
-                                              return(<span key={index}>, {getCatnameById(cat)}</span>)
+                                              return(<span key={index}>{getCatnameById(cat)}</span>)
                                              }else
                                              {
                                               return(<span key={index}>, {getCatnameById(cat)}</span>)
@@ -628,13 +628,13 @@ let date = dat.substring(6);
             <h6>{banner?.acf?.life_event_title}</h6>
             <h3>{banner?.acf?.life_event_sub_title}</h3>
             <p>{banner?.acf?.life_event_content}</p>
-            <Link href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="desktop-only view-more-btn">{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</Link>
+            <Link href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="desktop-only view-more-btn"><a className="desktop-only view-more-btn">{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</a></Link>
           </div>
           <div className="col-md-6 col-lg-5">
           <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.life_event_extra_content,
               }} />
-              <Link passHref href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="mobile-only view-more-btn"><a>{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</a></Link>
+              <Link passHref href={banner?.acf?.life_event_button_link ?banner?.acf?.life_event_button_link:"#"} className="mobile-only view-more-btn"><a className="mobile-only view-more-btn">{banner && banner.acf && banner.acf.life_event_button_text ? banner.acf.life_event_button_text:'#'}</a></Link>
           
           </div>
         </div>

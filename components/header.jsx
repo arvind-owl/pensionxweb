@@ -72,10 +72,10 @@ export default function Header({ children, headerMenuItems }) {
                                 <i className="fa fa-bars"></i>
                             </button>
                             <Link passHref className="navbar-brand  desktop-only" href="/">
-                            <a> <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" /></a>
+                            <a className="navbar-brand  desktop-only"> <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" /></a>
                             </Link>
                             <Link passHref className="navbar-brand mobile-only" href="/">
-                            <a><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
+                            <a className="navbar-brand  desktop-only"><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
                             </Link>
                         </div>
          
