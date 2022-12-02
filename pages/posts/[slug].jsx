@@ -4,7 +4,7 @@ import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
 import { IMAGE_URL } from '../../lib/constants';
 
 import Layout from '../../components/layout';
-
+import Link from 'next/link';
 import { getFooterMenu, getHeaderMenu } from '../../lib/Menus';
 import { getPostBySlug } from '../../lib/Posts';
 import React, { useState, useEffect } from "react";
@@ -148,7 +148,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 							{
 							return(
 								<>
-								<a href={item.url?item.url:'/'} className="AsideCardsMain" >
+								<Link href={item.url?item.url:'/'} className="AsideCardsMain" >
 								<div className="col ">
 									{ item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }
 								<div className="AsideCards" style={{'background':item.background_color?item.background_color:''}}>
@@ -156,7 +156,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 									<p dangerouslySetInnerHTML={createMarkup(item.description)} />
 								</div>
 							</div>
-							</a>
+							</Link>
 							</>
 							);
 							}
