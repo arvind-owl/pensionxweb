@@ -72,7 +72,7 @@ export async function getServerSideProps({ res }) {
 		posts: { edges },
 	} = await client.request(query);
 
-	const menuItems = ''; //await getFooterMenu();
+	const menuItems = await getFooterMenu();
 	const privatePosts = edges.map(({ node }) => node);
 	setEdgeHeader({ res });
 

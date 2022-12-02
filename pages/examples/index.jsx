@@ -47,7 +47,7 @@ export default function ExamplesPageTemplate({ menuItems }) {
 }
 
 export async function getServerSideProps({ res }) {
-	const menuItems = ''; //await getFooterMenu();
+	const menuItems = await getFooterMenu();
 	setEdgeHeader({ res });
 
 	return {

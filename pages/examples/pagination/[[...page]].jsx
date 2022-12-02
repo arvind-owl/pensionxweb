@@ -47,7 +47,7 @@ export default function PaginationExampleTemplate({ menuItems, posts }) {
 }
 
 export async function getServerSideProps({ res }) {
-	const menuItems = ''; //await getFooterMenu();
+	const menuItems = await getFooterMenu();
 	const posts = await paginationPostsQuery();
 	setEdgeHeader({ res });
 

@@ -1,116 +1,159 @@
-import Image from 'next/image';
-export default function Header({ children, headerMenu }) {
- 
+import axios from "axios";
+import Link from 'next/link';
+import React, { useState, useEffect } from "react";
+export default function Header({ children, headerMenuItems }) {
+    const [headerItem, setHeaderItem] = useState([]);
+    useEffect(() => {
+        axios
+          .get(
+            "https://dev-sdcera.pantheonsite.io/wp-json/menus/v1/menus/4/?nested=1"
+          )
+          .then((res) => setHeaderItem(res?.data));
+      }, []);
+    
+    function getUrlSlug(url)
+            {
+            let slug='';
+            let urlArray = url.split('/');
+            let urlLength = urlArray.length;
+            slug = urlArray[urlLength - 2];
+            return slug;
+            }
     return (
         <>
-        <header id="header">
-      <div className="container display-none-t">
-        <div className="row">
-          <div className="header_set">
-            <div className="col-md-12 text-right">
-              <div className="get-tuch text-left">
-                <div className="bs-searchbox">
-                  <input type="text" className="form-control" placeholder="Search" />
+          <div className="loader">
+                <div className="cssload-thecube">
+                    <div className="cssload-cube cssload-c1"></div>
+                    <div className="cssload-cube cssload-c2"></div>
+                    <div className="cssload-cube cssload-c4"></div>
+                    <div className="cssload-cube cssload-c3"></div>
                 </div>
-              </div>
-              <div className="get-tuch text-left">
-                <button type="submit" className="btn_fill">Member Login/Registration</button>
-              </div>
             </div>
-          </div>
-        </div>
-      </div>
-    
-        <nav className="navbar navbar-default navbar-fixed navbar-sticky dark bootsnav">
-        <div className="container">
-          <div className="navbar-header">
-            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
-              <i className="fa fa-bars"></i>
-            </button>
-            <a className="navbar-brand" href="index.html">
-              <Image src="/img/logo.png" width="200px"  height="100px" className="img-fluid desktop-only" alt="logo" ></Image>
-              <Image src="/img/mobile-logo.png" width="200px"  height="100px" className="img-fluid mobile-only" alt="logo" ></Image>
-            </a>
-          </div>
+
+            <div className="header-top-bar text-white d-none d-sm-block">
+                <div className="container">
+                    <div className="row">
+                    <div className="col-lg-12 text-end text-sm-center">
+                        <ul className="top-left-content">
+                        <li>
+                            <i className="fa fa-calendar"></i>
+                            <b>Pension Payment Calendar</b>
+                            <span className="check-mailed"> - Check Mailed <b>JULY 29</b>
+                            </span>
+                        </li>
+                        <li className="direct-deposit"> Direct Deposit <b>JULY 31</b>
+                        </li>
+                        </ul>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <header id="header">
+                <div className="container display-none-t">
+                    <div className="row">
+                        <div className="header_set">
+                            <div className="col-md-12 text-right">
+                                <div className="get-tuch text-left">
+                                    <div className="bs-searchbox">
+                                        <input type="text" className="form-control" placeholder="Search" />
+                                    </div>
+                                </div>
+                                <div className="get-tuch text-left">
+                                    <button type="submit" className="btn_fill">Member Login/Registration</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <nav className="navbar navbar-default navbar-sticky dark bootsnav">
+                    <div className="container">
+                        <div className="navbar-header">
+                            <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                                <i className="fa fa-bars"></i>
+                            </button>
+                            <Link className="navbar-brand" to="/">
+                                <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" />
+                                <img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" />
+                            </Link>
+                        </div>
          
-          <div className="collapse navbar-collapse nav_bor_bot" id="navbar-menu">
-            <ul className="nav navbar-nav navbar-right nav_3" data-in="fadeInDown" data-out="fadeOutUp">
-              <li className="mobile-only">
-                <div className="get-tuch text-left">
-                  <div className="bs-searchbox">
-                    <input type="text" className="form-control" placeholder="Search" />
-                  </div>
+                        <div className="collapse navbar-collapse nav_bor_bot" id="navbar-menu">
+                            <ul className="nav navbar-nav navbar-right nav_3" data-in="fadeInDown" data-out="fadeOutUp">
+                                <li className="mobile-only">
+                                    <div className="get-tuch text-left">
+                                        <div className="bs-searchbox">
+                                            <input type="text" className="form-control" placeholder="Search" />
+                                        </div>
+                                    </div>
+                                </li>
+                                {/* {headerMenuItems && headerMenuItems.length > 0 && headerMenuItems.map((menu,index)=>{
+                                    return (
+                                    <li>
+                                    <a className="list-items" href={'/pages'+menu.href}>{menu.linkText}</a>
+                                </li>
+                                    );
+                            })} */}
+
+                        {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
+                                    return (
+                                        <li key={index} className={val.children && val.children.length > 0 ?"dropdown desktop-only":"desktop-only"} >
+                                            <a  className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}>{val?.title}</a>
+                                        {/* {'/'+val?.object+'/'+val?.object_id} */}
+                                        {val.children &&
+                                        <ul className="dropdown-menu">
+                                             {val.children.length > 0 && val.children.map((sub, i) => {
+                                                return (
+                                                    <li key={i}><a href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}>{sub.title}</a></li>
+                                                );
+                                            })}
+                                            </ul>
+                                            }
+                                        </li>
+                                    );
+                                    })}
+                                
+                                
+                                <li className="dropdown desktop-only">
+                                    <a className="list-items dropdown-toggle" href="#" data-toggle="dropdown"> 실A Translate </a>
+                                    <ul className="dropdown-menu">
+                                        <li>
+                                            <a href="#">English</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Spanish</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">French</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Lorem Ipsum</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Lorem Ipsum</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Lorem Ipsum</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Lorem Ipsum</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <section className="registration-section mobile-only">
+                <div className="container">
+                    <div className="row">
+                    <div className="col-md-12">
+                        <button type="submit" className="btn_fill">Member Login/Registration</button>
+                    </div>
+                    </div>
                 </div>
-              </li>
-              <li className="mobile-only">
-                <div className="get-tuch text-left">
-                  <button type="submit" className="btn_Translate">실A Translate</button>
-                </div>
-              </li>
-              <li className="dropdown mobile-only">
-                <a href="board.html" className="dropdown-toggle" data-toggle="dropdown">Board of retirements</a>
-                <ul className="dropdown-menu animated">
-                  <li>
-                    <a href="#">Board of retirements - 1</a>
-                  </li>
-                  <li>
-                    <a href="#">Board of retirements - 2</a>
-                  </li>
-                  <li>
-                    <a href="#">Board of retirements - 3</a>
-                  </li>
-                </ul>
-              </li>
-              { 
-                headerMenu && headerMenu.map((ele,index)=>{
-                  return( 
-                  <li key={index}>
-                    <a className="list-items" href={ele.href}>{ele.linkText}</a>
-                  </li>);
-                })
-              }
-             
-              <li className="dropdown desktop-only">
-                <a className="list-items dropdown-toggle" href="#"  data-toggle="dropdown"> 실A Translate </a>
-                <ul className="dropdown-menu">
-                  <li>
-                    <a href="#">English</a>
-                  </li>
-                  <li>
-                    <a href="#">Spanish</a>
-                  </li>
-                  <li>
-                    <a href="#">French</a>
-                  </li>
-                  <li>
-                    <a href="#">Lorem Ipsum</a>
-                  </li>
-                  <li>
-                    <a href="#">Lorem Ipsum</a>
-                  </li>
-                  <li>
-                    <a href="#">Lorem Ipsum</a>
-                  </li>
-                  <li>
-                    <a href="#">Lorem Ipsum</a>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-     
-    </header>
-        <section className="registration-section mobile-only">
-      <div className="container">
-        <div className="row">
-          <div className="col-md-12">
-            <a href="" className="btn_fill">Member Login/Registration</a>
-          </div>
-        </div>
-      </div>
-    </section>
+            </section>
         </>
-);
-    }
+    );
+
+}
