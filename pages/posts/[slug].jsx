@@ -122,22 +122,9 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 }
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
+			<h1>{post.title}</h1>
+			<div dangerouslySetInnerHTML={createMarkup(post.content)} />
 			
-			<ContentWithImage
-				title={post.title}
-				content={post.content}
-				date={new Date(post.date).toLocaleDateString('en-US', {
-					timeZone: 'UTC',
-				})}
-				imageProps={
-					post.featuredImage
-						? {
-								src: post.featuredImage?.node.sourceUrl,
-								alt: post.featuredImage?.node.altText,
-						  }
-						: undefined
-				}
-			/>
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 			<div className="col-xl-3 col-lg-4">
 				<aside>
