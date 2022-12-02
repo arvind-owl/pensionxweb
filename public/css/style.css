@@ -714,16 +714,16 @@ i {
   padding: 0;
   font-family: "Cabin";
 }
-#header .nav.navbar-nav.navbar-right {
+#header .wrap-sticky .nav.navbar-nav.navbar-right {
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
-#header .bootsnav ul.nav > li:last-child {
+#header .wrap-sticky .bootsnav ul.nav > li:last-child {
   margin-right: 0 !important;
 }
-#header .bootsnav ul.nav > li:first-child {
+#header .wrap-sticky .bootsnav ul.nav > li:first-child {
   margin-left: 0 !important;
 }
-#header .attr-nav .search {
+#header .wrap-sticky .attr-nav .search {
   margin-right: -28px;
   margin-top: 6px;
 }
@@ -737,13 +737,13 @@ i {
   font-size: 18px;
   line-height: 5px;
 }
-#header .attr-nav {
+#header .wrap-sticky .attr-nav {
   border-left: none !important;
 }
 #header .collapse.navbar-collapse.nav_bor_bot {
   margin-bottom: -1px;
 }
-#header .navbar-brand {
+#header .wrap-sticky .navbar-brand {
   position: absolute;
   top: -90px;
   padding-left: 0px;
@@ -770,6 +770,7 @@ i {
 }
 #header nav.navbar.bootsnav.navbar-sticky .navbar-brand {
   display: block;
+  margin-top: -95px;
 }
 /* =========== NAVIGATION ============ */
 nav.bootsnav.brand-center .navbar-collapse .col-half.right {
@@ -1065,7 +1066,6 @@ nav.navbar.bootsnav
 .hero_slider {
   position: relative;
   width: 100%;
-  background: url(../img/hero-bg.jpg) no-repeat;
   background-size: cover;
   background-position: center center;
 }
@@ -1221,6 +1221,9 @@ nav.navbar.bootsnav
 .footer {
   background: #fff;
   position: relative;
+  float: left;
+    width: 100%;
+    clear: both;
 }
 
 .border-bottom {
@@ -1438,7 +1441,7 @@ nav.navbar.bootsnav
   #header .header_set {
     margin: 27px 0;
   }
-  #header .navbar-brand {
+  #header .wrap-sticky .navbar-brand {
     position: relative;
     top: auto;
   }
@@ -1926,6 +1929,8 @@ section#upcoming {
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
+  padding: 10px 6px;
+  display: block;
   line-height: 22px;
   top: 1698px;
   left: 141px;
@@ -1962,7 +1967,9 @@ section#upcoming {
   font-size: 50px;
   color: #292929;
 }
-
+.cbp.cbp-caption-active.cbp-caption-pushTop.cbp-ready {
+  height: 140px !important;
+}
 #listing_slider .owl-next,
 #property-listing-slider .owl-next,
 #news-slider .owl-next,
@@ -1971,7 +1978,13 @@ section#upcoming {
   font-size: 50px;
   color: #292929;
 }
-
+.cbp .cbp-item {
+  position: relative;
+  margin: 0px 10px;
+  float: left;
+  width: 30%;
+  overflow: hidden;
+}
 .owl-pagination {
   padding-left: 15px;
   padding-right: 15px;
@@ -2058,6 +2071,8 @@ section#upcoming {
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
+      width: 100%;
+    float: left;
 }
 
 .event-item .event-image {
@@ -2178,7 +2193,7 @@ ul.dropdown-menu {
   opacity: 1;
 }
 
-.get-started-content > h4 {
+.get-started-content h4 {
   margin-top: 20px;
   text-align: center;
   font: normal normal bold 17px/26px Cabin;
@@ -2282,7 +2297,7 @@ span.ticket-price.calcelled {
   top: 40%;
 }
 
-.stickyHeader {
+.wrap-sticky {
   height: auto;
 }
 
@@ -2320,9 +2335,13 @@ span.ticket-price.calcelled {
 }
 
 .get-started-content img {
-  margin-bottom: 45px;
+ 
   max-width: 100px;
   min-width: 100px;
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 45px;
 }
 
 .get-started-content:hover h4:after {
@@ -2356,7 +2375,7 @@ input.form-control::placeholder {
   box-shadow: none !important;
 }
 
-.stickyHeader  .nav.navbar-nav {
+.stickyHeader .wrap-sticky {
   height: 30px !important;
 }
 
@@ -2377,7 +2396,7 @@ nav.navbar.bootsnav.sticked .navbar-brand > img {
   margin-top: 82px;
 }
 
-nav.navbar.bootsnav.navbar-fixed .logo-display {
+nav.navbar.bootsnav .logo-display {
   display: block !important;
 }
 nav.navbar.bootsnav ul.nav > li > a {
@@ -3803,7 +3822,20 @@ section#work-area\ padding {
     float: left;
     display: block;
 }
-
+.stickyHeader img.img-fluid.desktop-only {
+  margin-top: 0px !important;
+}
+.stickyHeader nav.navbar.navbar-default.navbar-sticky {
+  top: 0;
+  position: fixed;
+  width: 100%;
+    background: #fff;
+}
+.stickyHeader a.navbar-brand {
+  height: auto;
+  width: 170px;
+  margin-top: 0px !important;
+}
 @media (min-width: 1200px) and (max-width: 15000px) {
   .justify-content-center {
     -ms-flex-pack: center !important;
