@@ -88,24 +88,18 @@ export default function Header({ children, headerMenuItems }) {
                                         </div>
                                     </div>
                                 </li>
-                                {/* {headerMenuItems && headerMenuItems.length > 0 && headerMenuItems.map((menu,index)=>{
-                                    return (
-                                    <li>
-                                    <a className="list-items" href={'/pages'+menu.href}>{menu.linkText}</a>
-                                </li>
-                                    );
-                            })} */}
+                             
 
                         {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
                                         <li key={index} className={val.children && val.children.length > 0 ?"dropdown desktop-only":"desktop-only"} >
-                                            <a  className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}>{val?.title}</a>
+                                            <Link className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}>{val?.title}</Link>
                                         {/* {'/'+val?.object+'/'+val?.object_id} */}
                                         {val.children &&
                                         <ul className="dropdown-menu">
                                              {val.children.length > 0 && val.children.map((sub, i) => {
                                                 return (
-                                                    <li key={i}><a href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}>{sub.title}</a></li>
+                                                    <li key={i}><Link href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}>{sub.title}</Link></li>
                                                 );
                                             })}
                                             </ul>

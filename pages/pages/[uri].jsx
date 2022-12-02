@@ -231,7 +231,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                 {
                 return(
                     <>
-                    <a href={item.url?item.url:'/'} className="AsideCardsMain" >
+                    <Link href={item.url?item.url:'/'} className="AsideCardsMain" >
                     <div className="col ">
                         { item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }
                     <div className="AsideCards" style={{'background':item.background_color?item.background_color:''}}>
@@ -239,7 +239,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                         <p dangerouslySetInnerHTML={createMarkup(item.description)} />
                     </div>
                 </div>
-                </a>
+                </Link>
                 </>
                 );
                 }
