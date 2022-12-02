@@ -71,11 +71,11 @@ export default function Header({ children, headerMenuItems }) {
                             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                                 <i className="fa fa-bars"></i>
                             </button>
-                            <Link className="navbar-brand  desktop-only" href="/">
-                                <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" />
+                            <Link passHref className="navbar-brand  desktop-only" href="/">
+                            <a> <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" /></a>
                             </Link>
-                            <Link className="navbar-brand mobile-only" href="/">
-                                <img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" />
+                            <Link passHref className="navbar-brand mobile-only" href="/">
+                            <a><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
                             </Link>
                         </div>
          
@@ -93,13 +93,13 @@ export default function Header({ children, headerMenuItems }) {
                         {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
                                         <li key={index} className={val.children && val.children.length > 0 ?"dropdown desktop-only":"desktop-only"} >
-                                            <Link className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}>{val?.title}</Link>
+                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a>{val.title?val.title:'#'}</a></Link>
                                         {/* {'/'+val?.object+'/'+val?.object_id} */}
                                         {val.children &&
                                         <ul className="dropdown-menu">
                                              {val.children.length > 0 && val.children.map((sub, i) => {
                                                 return (
-                                                    <li key={i}><Link href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}>{sub.title}</Link></li>
+                                                    <li key={i}><Link passHref href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}><a>{sub.title?sub.title:'#'}</a></Link></li>
                                                 );
                                             })}
                                             </ul>

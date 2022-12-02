@@ -148,14 +148,14 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 							{
 							return(
 								<>
-								<Link href={item.url?item.url:'/'} className="AsideCardsMain" >
-								<div className="col ">
+								<Link passHref href={item.url?item.url:'/'} className="AsideCardsMain" >
+								<a><div className="col ">
 									{ item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }
 								<div className="AsideCards" style={{'background':item.background_color?item.background_color:''}}>
 									<h5>{item.title}</h5>
 									<p dangerouslySetInnerHTML={createMarkup(item.description)} />
 								</div>
-							</div>
+							</div></a>
 							</Link>
 							</>
 							);
