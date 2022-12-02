@@ -166,11 +166,11 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 					<div class="main-title">
 					<h1>{pageContent[0]?.acf?.page_header_title}</h1>
 					<h5>{pageContent[0]?.acf?.page_header_subtitle}</h5>
-					<a href="/">home</a>
+					<Link href="/">home</Link>
 					<span>
 						<i class="fa fa-angle-double-right"></i>
 					</span>
-					<a href="investments">{page.title}</a>
+					<Link href="investments">{page.title}</Link>
 					</div>
 				</div>
 				</div>
@@ -218,22 +218,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 			}
     
 	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'  px-xl-5 px-3 col-xl-12 col-lg-12'}>
-	 
-		<ContentWithImage
-				title={page.title}
-				content={page.content}
-				date={new Date(page.date).toLocaleDateString('en-US', {
-					timeZone: 'UTC',
-				})}
-				imageProps={
-					page.featuredImage
-						? {
-								src: page.featuredImage?.node.sourceUrl,
-								alt: page.featuredImage?.node.altText,
-						  }
-						: undefined
-				}
-			/>
+	<div dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-4">
