@@ -166,11 +166,11 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 					<div class="main-title">
 					<h1>{pageContent[0]?.acf?.page_header_title}</h1>
 					<h5>{pageContent[0]?.acf?.page_header_subtitle}</h5>
-					<a href="/">home</a>
+					<Link href="/">home</Link>
 					<span>
 						<i class="fa fa-angle-double-right"></i>
 					</span>
-					<a href="investments">{page.title}</a>
+					<Link href="investments">{page.title}</Link>
 					</div>
 				</div>
 				</div>
