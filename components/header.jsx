@@ -71,7 +71,7 @@ export default function Header({ children, headerMenuItems }) {
                             <button type="button" className="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
                                 <i className="fa fa-bars"></i>
                             </button>
-                            <Link className="navbar-brand" to="/">
+                            <Link className="navbar-brand" href="/">
                                 <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" />
                                 <img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" />
                             </Link>

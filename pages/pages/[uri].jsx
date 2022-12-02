@@ -170,7 +170,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 								  <li key={i}>
 								  <Link
 									className="d-block"
-									to={'/'+sub?.object+'/'+getUrlSlug(sub?.url)}
+									href={'/'+sub?.object+'/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
 									{sub.title}
@@ -183,7 +183,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 									  <li key={i}>
 									  <Link
 										className="d-block text-white HeaderDropDownListItem "
-										to={'/'+subsub?.object+'/'+getUrlSlug(subsub?.url)}
+										href={'/'+subsub?.object+'/'+getUrlSlug(subsub?.url)}
 										key={i}
 									  >
 										{subsub.title}
