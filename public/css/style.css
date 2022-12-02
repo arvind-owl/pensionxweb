@@ -1231,7 +1231,7 @@ nav.navbar.bootsnav
   opacity: 1 !important;
 }
 .btn_fill {
-  background: #394d6b;
+  background: #394d6b !important;
   text-align: left;
   font: normal normal bold 16px/19px Cabin;
   letter-spacing: 0px;
@@ -1668,7 +1668,7 @@ nav.navbar.bootsnav
 }
 
 .btn_fill:hover {
-  background: transparent;
+  background: transparent !important;
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
