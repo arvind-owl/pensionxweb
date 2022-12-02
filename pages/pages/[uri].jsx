@@ -160,6 +160,20 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 	
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
+			
+			<div class="page-title page-main-section" style={{backgroundImage: 'url('+pageContent[0]?.acf?.banner_image+')'}}>
+				<div class="container text-uppercase text-center">
+					<div class="main-title">
+					<h1>{pageContent[0]?.acf?.page_header_title}</h1>
+					<h5>{pageContent[0]?.acf?.page_header_subtitle}</h5>
+					<a href="/">home</a>
+					<span>
+						<i class="fa fa-angle-double-right"></i>
+					</span>
+					<a href="investments">{page.title}</a>
+					</div>
+				</div>
+				</div>
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') && 
 			
 			<div className="col-lg-2 leftSidebarSection">
