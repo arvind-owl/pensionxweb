@@ -222,7 +222,7 @@ function getMediaUrlById(id)
 			}
     
 	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
-	<div dangerouslySetInnerHTML={createMarkup(page.content)} />
+	<div class="col-lg-8" dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-4">
