@@ -222,6 +222,13 @@ h3,
 h4 {
   font-family: "Cabin";
 }
+.page-title{
+  
+  margin-bottom: 50px;
+}
+.leftright_sidebar {
+  margin: 50px 0;
+}.
 .page-title h5,
 .page-title a {
   font-family: "Cabin";
@@ -2506,7 +2513,6 @@ nav.navbar.bootsnav ul.nav > li > a {
 .page-title span {
   margin: 0 10px;
   position: relative;
-  margin-bottom: 50px;
 }
 
 .main-title {
