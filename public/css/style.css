@@ -300,6 +300,10 @@ h5 {
   font-size: 16px !important;
   margin: 0;
 }
+audio, canvas, embed, iframe, img, object, svg, video {
+  display: inline-block !important;
+  vertical-align: middle;
+}
 .color_white {
   color: #fff;
 }
