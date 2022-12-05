@@ -10,7 +10,7 @@ import { getLatestPosts } from '../lib/Posts';
 import { REACT_LOADABLE_MANIFEST } from 'next/dist/shared/lib/constants';
 
 export default function Home({ menuItems, posts, headerMenuItems }) {
-  const [banner, setBanner] = useState([]);
+  const [banner, setBanner] = useState();
   const [postsData, setPostsData]= useState();
   const [categoriesData, setCategoriesData]= useState([]);
   const [eventCategories, setEventCategories] = useState([]);
@@ -19,16 +19,24 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
   const [reloadItem, setReloadItem] = useState(0);
   const [allImages, setAllImage]=useState([]);
   const [isAlreadyImages, setIsAlreadyImages]=useState([]);
-
+    let [currentSlide, setCurrentSlide] = useState(0);
   useEffect(() => {
    
   },[reloadItem]);
+  const activeOwlSide=(index)=>{
+    if(index < 0 )
+    {
+      setCurrentSlide(index + 1 );
+    }
+    else
+    {
+      setCurrentSlide(index);
+    }
+    
+    setReloadItem(!reloadItem);
+  }
   useEffect(() => {
-    axios
-      .get(
-        "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?slug=home"
-      )
-      .then((res) => setBanner(res?.data[0]));
+    axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?slug=home").then((res) => setBanner(res?.data[0]));
   
     }, []);
 
@@ -38,14 +46,14 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
       getEventCategories();
       getEventPosts();
     },[banner]);
-	function getEventCategories(){
+	const getEventCategories=()=>{
     axios
     .get(
       "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/eventcategory"
     )
     .then((res) =>setEventCategories(res?.data));
   }
-  function getEventPosts(){
+  const  getEventPosts=()=>{
     let categories = banner?.acf?.upcoming_event_event_categories;
   if(categories && categories.length > 0 )
   {
@@ -106,8 +114,7 @@ else
   }
   }
  
-  function getPostsByCategories()
-  {
+  const getPostsByCategories=()=>{
     let categories = banner?.acf?.stay_informed_post_category;
   if(categories && categories.length > 0 )
   {
@@ -143,7 +150,6 @@ else
 
         let title = pdata?.title?.rendered;
         res.data[index].title = title;
-        
         if(index == res?.data.length - 1)
         {
           allupdate = true;
@@ -153,6 +159,9 @@ else
       {
         setPostsData(res?.data);
       }
+        
+       
+     
      
     })
   
@@ -169,8 +178,7 @@ else
     return 'No Category selected ! Please choose any one category from admin.';
   }
   }
-function getCategoryNames()
-{
+  const  getCategoryNames=()=>{
   axios
   .get(
     "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/categories"
@@ -178,8 +186,7 @@ function getCategoryNames()
   .then((res) => setCategoriesData(res?.data));
 }
 
-function getCatnameById(id)
-{
+const getCatnameById=(id)=>{
   
   let result = categoriesData.filter((ele)=>ele.id==id);
   if(result && result.length > 0 )
@@ -194,8 +201,7 @@ function getCatnameById(id)
 }
 
 
-function getEventCatnameById(id)
-{
+const  getEventCatnameById=(id)=>{
   
   let result = eventCategories.filter((ele)=>ele.id==id);
   if(result && result.length > 0 )
@@ -209,8 +215,7 @@ function getEventCatnameById(id)
   
 }
 
-function getEventCatslugById(id)
-{
+const  getEventCatslugById=(id)=>{
   
   let result = eventCategories.filter((ele)=>ele.id==id);
   if(result && result.length > 0 )
@@ -223,8 +228,7 @@ function getEventCatslugById(id)
   }
   
 }
-function getCovertMonthFormat(dat)
-{
+const  getCovertMonthFormat=(dat)=>{
   const months = [
     "JAN", "FEB", 
     "MAR", "APR", "MAY", 
@@ -239,8 +243,7 @@ let mon = dat.substring(4, 6);
   return dateFormat;
 }
 
-function getCovertTimeFormat(tim)
-{
+const  getCovertTimeFormat=(tim)=>{
   let time = tim.substring(0, 2);
   let onlytime = tim.substring(0, 5);
   if(time > 12)
@@ -253,8 +256,7 @@ function getCovertTimeFormat(tim)
   }
 }
 
-function getImageUrl(imageId)
-      {
+const  getImageUrl=(imageId)=> {
         let isAlready = false;
         isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
           
@@ -274,8 +276,8 @@ function getImageUrl(imageId)
         return url;
 
       }
-function getMediaUrlById(id)
-{
+      const getMediaUrlById=(id)=>{
+       
   let isAlready = false;
         isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
           
@@ -285,8 +287,10 @@ function getMediaUrlById(id)
             }
             
         });
+      
         if(!isAlready)
             {
+              setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
   if(res)
@@ -305,7 +309,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
   pdata.title = title;
 
   let newImageArray = {'id':id,"Url":pdata.guid};
-   setIsAlreadyImages((arr) => [...arr,id]);
+  
    setAllImage((arr) => [...arr,newImageArray]);
     setReloadItem(!reloadItem);
   }
@@ -314,8 +318,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
   
 }
 
-function getCovertDateFormat(dat)
-{
+const getCovertDateFormat=(dat)=>{
   
 let date = dat.substring(6);
 
@@ -323,7 +326,7 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-console.log(postsData);
+console.log("currentSlide",currentSlide);
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
@@ -410,10 +413,14 @@ console.log(postsData);
 					</div>
 				</div>
         		<div className="row top40 desktop-only">
+            {postsData &&
           			<div id="news-slider" className="owl-carousel">
-                  {postsData && postsData.length > 0 && postsData.map((post,index)=>{
+                  <div className='owl-wrapper-outer'>
+                    <div className='owl-wrapper' style={{width: (postsData.length*456)+'px',left: '0px', display:'block', transition: 'all 800ms ease 0s', transform: 'translate3d(0px, 0px, 0px)'}}>
+                   {postsData.length > 0 && postsData.map((post,index)=>{
                     return(
-                          <div key={index} className="item">
+                          <div key={index} className="owl-item">
+                            <div className='item'>
                             <div className="news_item bottom40">
                                     <div className="image">
                                       <img src={post?.featured_media && getImageUrl(post?.featured_media)} alt="listin" className="img-fluid" />
@@ -439,12 +446,32 @@ console.log(postsData);
                                     </div>
                                   </div>
                                 </div>
-            
+                                </div>
                     )
 
                   })}
-            			
-          </div>
+            			</div>
+                  </div>
+                  <div className="owl-controls clickable">
+                    <div className="owl-pagination">
+                    {postsData.length > 0 && postsData.map((post,index)=>{
+                     return( <div key={index} className={currentSlide == index ?"active owl-page": "owl-page"} onClick={()=>{activeOwlSide(index)}}>
+                        <span ></span>
+                        </div>);
+                    })}
+                      
+                    </div>
+                  <div className="owl-buttons">
+                    <div className="owl-prev" onClick={()=>{activeOwlSide(currentSlide -1)}}>
+                      <i className="fa fa-angle-left"></i>
+                    </div>
+                    <div className="owl-next" onClick={()=>{activeOwlSide(currentSlide +1)}}>
+                      <i className="fa fa-angle-right"></i>
+                    </div>
+                </div>
+              </div>
+                </div>
+            }
         </div>
         <div className="row mobile-only">
         {

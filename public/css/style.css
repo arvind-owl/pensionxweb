@@ -282,13 +282,13 @@ h6 {
   color: #1f1f1f;
 }
 h2 {
-  font-size: 32px;
+  font-size: 32px !important;
 }
 h3 {
-  font-size: 24px;
+  font-size: 24px !important;
 }
 h4 {
-  font-size: 18px;
+  font-size: 18px !important;
 }
 h2,
 h3,
@@ -297,8 +297,12 @@ h4 {
   margin: 0;
 }
 h5 {
-  font-size: 16px;
+  font-size: 16px !important;
   margin: 0;
+}
+audio, canvas, embed, iframe, img, object, svg, video {
+  display: inline-block !important;
+  vertical-align: middle;
 }
 .color_white {
   color: #fff;
@@ -310,7 +314,7 @@ h5 {
   color: #000;
 }
 i {
-  font-size: 20px;
+  font-size: 20px !important;
 }
 .bg-color-gray {
   background: #f6f6f6;
@@ -468,6 +472,17 @@ i {
 }
 .cssload-thecube .cssload-cube::before {
   background-color: #fff;
+}
+.AsideCards h5 {
+  margin-bottom: 6px!important;
+  text-align: left;
+  font: normal normal bold 20px/20px Cabin!important;
+  letter-spacing: 0px;
+  color: #292929;
+  opacity: 1;
+}
+.AsideCards {
+  padding: 20px;
 }
 .cssload-thecube {
   top: 30%;
@@ -1214,6 +1229,10 @@ nav.navbar.bootsnav
   margin-left: 16.6667%;
 }
 
+.px-3 {
+  padding-right: 0rem!important;
+  padding-left: 0rem!important;
+}
 /* ================================= */
 /* ----------- FOOTER CSS ---------- */
 /* ================================= */
@@ -2044,9 +2063,33 @@ section#upcoming {
 
 #news-slider .item {
   margin: 0 20px;
-  width: 30%;
   float: left;
 }
+#news-slider .owl-item
+{
+    width: 456px;
+}
+#news-slider .owl-controls .owl-page span {
+  background: transparent;
+  border-radius: 50px;
+  display: block;
+  height: 10px;
+  margin: 0 2px;
+  opacity: 0.5;
+  width: 10px;
+  border: 1px solid #292929;
+  opacity: 1;
+}
+.main-title h1 {
+  font-weight: 700;
+  font-size: 36px!important;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+#news-slider .owl-controls .owl-page.active span{
+  background: #292929;
+}
+
 #news-slider .image img {
   height: 352px;
 }
@@ -2463,6 +2506,7 @@ nav.navbar.bootsnav ul.nav > li > a {
 .page-title span {
   margin: 0 10px;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .main-title {
