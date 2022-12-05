@@ -473,6 +473,17 @@ i {
 .cssload-thecube .cssload-cube::before {
   background-color: #fff;
 }
+.AsideCards h5 {
+  margin-bottom: 6px!important;
+  text-align: left;
+  font: normal normal bold 20px/20px Cabin!important;
+  letter-spacing: 0px;
+  color: #292929;
+  opacity: 1;
+}
+.AsideCards {
+  padding: 20px;
+}
 .cssload-thecube {
   top: 30%;
   width: 73px;
@@ -2495,6 +2506,7 @@ nav.navbar.bootsnav ul.nav > li > a {
 .page-title span {
   margin: 0 10px;
   position: relative;
+  margin-bottom: 50px;
 }
 
 .main-title {
