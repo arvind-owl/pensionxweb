@@ -131,29 +131,33 @@ function getMediaUrlById(id)
         });
         if(!isAlready)
             {
-axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
+				if(id)
+				{
+					axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
-  if(res)
-  {
-   let pdata = res.data;
-  let cont = pdata?.content?.rendered;
-  pdata.content = cont;
+						if(res)
+						{
+						 let pdata = res.data;
+						let cont = pdata?.content?.rendered;
+						pdata.content = cont;
+					  
+						let excerpt = pdata?.excerpt?.rendered;
+						pdata.excerpt = excerpt;
+					  
+						let guid = pdata?.guid?.rendered;
+						pdata.guid = guid;
+					  
+						let title = pdata?.title?.rendered;
+						pdata.title = title;
+					  
+						let newImageArray = {'id':id,"Url":pdata.guid};
+						 setIsAlreadyImages((arr) => [...arr,id]);
+						 setAllImage((arr) => [...arr,newImageArray]);
+						  setReloadItem(!reloadItem);
+						}
+					  })
+				}
 
-  let excerpt = pdata?.excerpt?.rendered;
-  pdata.excerpt = excerpt;
-
-  let guid = pdata?.guid?.rendered;
-  pdata.guid = guid;
-
-  let title = pdata?.title?.rendered;
-  pdata.title = title;
-
-  let newImageArray = {'id':id,"Url":pdata.guid};
-   setIsAlreadyImages((arr) => [...arr,id]);
-   setAllImage((arr) => [...arr,newImageArray]);
-    setReloadItem(!reloadItem);
-  }
-})
             }
   
 }
@@ -161,7 +165,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
 			
-			<div class="page-title page-main-section" style={{backgroundImage: 'url('+pageContent[0]?.acf?.banner_image+')'}}>
+			<div class="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div class="container text-uppercase text-center">
 					<div class="main-title">
 					<h1>{pageContent[0]?.acf?.page_header_title}</h1>
@@ -217,7 +221,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 			</div>
 			}
     
-	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'  px-xl-5 px-3 col-xl-12 col-lg-12'}>
+	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
 	<div dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
