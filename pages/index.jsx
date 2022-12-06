@@ -20,19 +20,78 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
   const [allImages, setAllImage]=useState([]);
   const [isAlreadyImages, setIsAlreadyImages]=useState([]);
     let [currentSlide, setCurrentSlide] = useState(0);
+    let [translateVal, setTranslateVal]= useState(0);
+
   useEffect(() => {
    
   },[reloadItem]);
   const activeOwlSide=(index)=>{
-    if(index < 0 )
+    let calTranslate = 0;
+    let calNewTranslate = 0;
+    if(index==1 || index==0)
     {
-      setCurrentSlide(index + 1 );
+      calNewTranslate = 0;
+    }
+    else if(index == postsData.legnth - 1)
+    {
+      calNewTranslate = (postsData.legnth - 1) * -456;
     }
     else
     {
-      setCurrentSlide(index);
+      calNewTranslate = -456 * (index - 1);
     }
     
+    setCurrentSlide(index);
+    setTranslateVal(calNewTranslate);
+    setReloadItem(!reloadItem);
+  }
+
+  const prevOwlSide=(index)=>{
+    
+   
+    let calTranslate = 0;
+    let calNewTranslate = 0;
+    if(currentSlide==0)
+    {
+      calNewTranslate = 0;
+      setCurrentSlide(index);
+    }
+    else if(index == postsData.length - 1)
+    {
+      calNewTranslate = ((currentSlide - 2) * -456);
+      setCurrentSlide(index - 1);
+    }
+    else
+    {
+      calNewTranslate = translateVal - (-456);
+      setCurrentSlide(index - 1);
+    }
+
+    setTranslateVal(calNewTranslate);
+    setReloadItem(!reloadItem);
+  }
+
+  const nextOwlSide=(index)=>{
+    
+    let calTranslate = 0;
+    let calNewTranslate = 0;
+    if((currentSlide)==0)
+    {
+      calNewTranslate = 0;
+      setCurrentSlide(index + 1);
+    }
+    else if(index == postsData.length - 1)
+    {
+      calNewTranslate = (postsData.length - 1) * -456;
+      setCurrentSlide(0);
+    }
+    else
+    {
+      calNewTranslate = -456 * (currentSlide);
+      setCurrentSlide(index + 1);
+    }
+    
+    setTranslateVal(calNewTranslate);
     setReloadItem(!reloadItem);
   }
   useEffect(() => {
@@ -326,7 +385,6 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-console.log("currentSlide",currentSlide);
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
@@ -416,7 +474,7 @@ console.log("currentSlide",currentSlide);
             {postsData &&
           			<div id="news-slider" className="owl-carousel">
                   <div className='owl-wrapper-outer'>
-                    <div className='owl-wrapper' style={{width: (postsData.length*456)+'px',left: '0px', display:'block', transition: 'all 800ms ease 0s', transform: 'translate3d(0px, 0px, 0px)'}}>
+                    <div className='owl-wrapper' style={{width: (postsData.length*456)+'px',left: '0px', display:'block', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'px, 0px, 0px)'}}>
                    {postsData.length > 0 && postsData.map((post,index)=>{
                     return(
                           <div key={index} className="owl-item">
@@ -462,10 +520,10 @@ console.log("currentSlide",currentSlide);
                       
                     </div>
                   <div className="owl-buttons">
-                    <div className="owl-prev" onClick={()=>{activeOwlSide(currentSlide -1)}}>
+                    <div className ={currentSlide == 0?"owl-prev disabled":"owl-prev"} onClick={()=>{ prevOwlSide(currentSlide)}}>
                       <i className="fa fa-angle-left"></i>
                     </div>
-                    <div className="owl-next" onClick={()=>{activeOwlSide(currentSlide +1)}}>
+                    <div className={currentSlide == postsData.length - 1 ?"owl-next disabled" : "owl-next"}  onClick={()=>{nextOwlSide(currentSlide)}}>
                       <i className="fa fa-angle-right"></i>
                     </div>
                 </div>
