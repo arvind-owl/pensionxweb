@@ -767,7 +767,7 @@ i {
 }
 #header .wrap-sticky .navbar-brand {
   position: absolute;
-  top: -90px;
+  /* top: -90px; */
   padding-left: 0px;
 }
 #header .cool-link_3 {
