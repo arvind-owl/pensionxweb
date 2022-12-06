@@ -312,10 +312,10 @@ h5 {
   font-size: 16px !important;
   margin: 0;
 }
- /* img {
+ .how-we-work-section img {
   display: inline-block !important;
   vertical-align: middle;
-} */
+} 
 .color_white {
   color: #fff;
 }
