@@ -180,7 +180,7 @@ function getMediaUrlById(id)
 				</div>
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') && 
 			
-			<div className="col-lg-2 leftSidebarSection">
+			<div className="col-lg-2  leftSidebarSection">
 			{subMenuData && subMenuData.length > 0 ? <h5 className="leftSidebarHeading">{parentPageData?.title?.rendered}</h5>:'' }
 			<ul className=" m-0 p-0 submenus">
 			{subMenuData && subMenuData.length > 0 ? subMenuData && subMenuData[0] && subMenuData.map((sub, i) => {
