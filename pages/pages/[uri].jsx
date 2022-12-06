@@ -233,7 +233,7 @@ function getMediaUrlById(id)
                 if(item.image || item.title || item.description)
                 {
                 return(
-                    <div className='asideBox'>
+                    <div className='asideBox' key={index}>
                     <Link passHref href={item.url?item.url:'/'} className="AsideCardsMain" ><a >
                     <div className="col ">
                         { item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }

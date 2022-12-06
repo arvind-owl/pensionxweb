@@ -234,6 +234,11 @@ h4 {
   font-family: "Cabin";
   color: #005581;
 }
+.get-started-content .hover {
+  margin-bottom: 45px!important;
+  max-width: 123px;
+  min-width: 123px;
+}
 b,
 strong {
   font-weight: 900;
@@ -1703,7 +1708,7 @@ nav.navbar.bootsnav
 
 .hero_slider h2 {
   text-align: left;
-  font: normal normal bold 61px/63px Cabin;
+  font: normal normal bold 61px/63px Cabin !important;
   letter-spacing: 0px;
   color: #ffffff;
   text-shadow: 0px 3px 6px #00000029;

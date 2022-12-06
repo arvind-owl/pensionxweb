@@ -93,7 +93,7 @@ export default function Header({ children, headerMenuItems }) {
                         {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
                                         <li key={index} className={val.children && val.children.length > 0 ?"dropdown desktop-only":"desktop-only"} >
-                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a>{val.title?val.title:'#'}</a></Link>
+                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown">{val.title?val.title:'#'}</a></Link>
                                         {/* {'/'+val?.object+'/'+val?.object_id} */}
                                         {val.children &&
                                         <ul className="dropdown-menu">
