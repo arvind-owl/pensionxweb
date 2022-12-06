@@ -182,7 +182,7 @@ function getMediaUrlById(id)
 			
 			<div className="col-lg-2 leftSidebarSection">
 			{subMenuData && subMenuData.length > 0 ? <h5 className="leftSidebarHeading">{parentPageData?.title?.rendered}</h5>:'' }
-			<ul className="justify-content-end m-0 p-0 submenus">
+			<ul className=" m-0 p-0 submenus">
 			{subMenuData && subMenuData.length > 0 ? subMenuData && subMenuData[0] && subMenuData.map((sub, i) => {
 								return (
 								  <li key={i}>
@@ -221,11 +221,11 @@ function getMediaUrlById(id)
 			</div>
 			}
     
-	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
-	<div className="col-lg-8" dangerouslySetInnerHTML={createMarkup(page.content)} />
+	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
+	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default  col-lg-12'} dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
-<div className="col-xl-3 col-lg-4">
+<div className="col-xl-3 col-lg-3">
 <aside>
         <div className="row flex-column">
         {pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
@@ -245,7 +245,7 @@ function getMediaUrlById(id)
 				</a>
                 </Link>
                 </div>
-                );
+                )
                 }
             }):'There are no Items available.' }
             
@@ -256,7 +256,7 @@ function getMediaUrlById(id)
 :''}               
      </div>
 </Layout>
-	);
+	)
 }
 
 export async function getServerSideProps({ params: { uri }, res }) {

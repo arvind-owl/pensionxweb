@@ -222,12 +222,16 @@ h3,
 h4 {
   font-family: "Cabin";
 }
-.page-title{
-  
-  margin-bottom: 50px;
-}
+
 .leftright_sidebar {
   margin: 50px 0;
+}
+.asideBox {
+  margin-bottom: 30px;
+}
+
+.asideBox img {
+  width: 100%;
 }
 .page-title h5,
 .page-title a {
@@ -2780,12 +2784,17 @@ nav.navbar.bootsnav ul.nav > li > a {
   font-weight: bold;
 }
 .feature_box .icon {
+  background-color: #394d6b;
   height: 60px;
   left: -2px;
-  padding: 20px;
+  padding: 0px 0;
   position: absolute;
   top: -2px;
   width: 60px;
+  text-align: center;
+}
+.leftSidebarSection {
+  margin: 50px 0;
 }
 .feature_box .icon:after {
   bottom: -8px;
