@@ -32,9 +32,10 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 		  "https://dev-sdcera.pantheonsite.io/wp-json/menus/v1/menus/4/?nested=1"
 		)
 		.then((res) => setHeaderNewItem(res?.data));
+		setReloadItem(!reloadItem);
 	}
 	useEffect(()=>{
-
+		getMainMenus();
 		if(page)
 		{
 		
@@ -65,9 +66,11 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 					
 					if(parentPageId > 0)
 					{
+					//console.log(parentPageId);
 					let subMenu = headerNewItem && headerNewItem.filter((Item)=>(Item.object_id==parentPageId)).map((Item)=>{return(Item.submenu?Item.submenu:Item.children)} );
 					subMenuData = subMenu && subMenu.length > 0 && subMenu[0];
-					
+					// console.log(headerNewItem);
+					// console.log(subMenu);
 					setSubMenuData(subMenuData);
 					}
 					if(parentPageId > 0)
@@ -89,7 +92,7 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
     
 
 
-
+		setReloadItem(!reloadItem);
 
 		}
 	},[page]);
@@ -208,30 +211,43 @@ function getMediaUrlById(id)
 								  <li key={i}>
 								  <Link passHref
 									className="d-block"
-									href={'/'+sub?.object+'/'+getUrlSlug(sub?.url)}
+									href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
-									<a>{sub.title?sub.title:'#'}</a>
+									<a className="d-block" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
 								  </Link>
-								  {sub.submenu && sub.submenu.length > 0 ?
+								  {sub.children ?
 								  <div className="d-flex flex-column ">
-								  <ul className="submenus_submenus">
-								  {sub.submenu.map((subsub, i) => {
-									return (
-									  <li key={i}>
-									  <Link passHref
-										className="d-block text-white HeaderDropDownListItem "
-										href={'/'+subsub?.object+'/'+getUrlSlug(subsub?.url)}
-										key={i}
-									  >
-										<a>{subsub.title?subsub.title:'#'}</a>
-									  </Link>
-									  </li>
-									);
-								  })}
-								  </ul>
-								</div>
-								:''}
+								<ul className="submenus_submenus">
+								 {sub.children && sub.children.length && sub.children.map((subsub, i) => {
+								  return (
+									<li key={i}>
+									<Link passHref
+									  className="d-block text-white HeaderDropDownListItem "
+									  href={'/'+subsub?.object+'s/'+getUrlSlug(subsub?.url)}
+									  key={i}
+									>
+									  <a className="d-block text-white HeaderDropDownListItem " dangerouslySetInnerHTML={createMarkup(subsub.title?subsub.title:'#')}></a>
+									</Link>
+									</li>
+								  );
+								})}
+								</ul>
+							  </div>
+								:  <div className="d-flex flex-column ">
+								<ul className="submenus_submenus">
+								 <li key="0">
+									<Link passHref
+									  className="d-block text-white HeaderDropDownListItem "
+									  href="/pages/contact"
+									>
+									  <a className="d-block text-white HeaderDropDownListItem " >Contact</a>
+									</Link>
+									</li>
+								  
+								</ul>
+							  </div>
+								}
 								</li>
 								);
 							  })
@@ -242,12 +258,11 @@ function getMediaUrlById(id)
 			}
     
 	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
-	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default  col-lg-12'} dangerouslySetInnerHTML={createMarkup(page.content)} />
+	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default'} dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-3">
-<aside>
-        <div className="row flex-column">
+        <div className="row">
         {pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
             pageContent[0]?.acf?.right_sidebar_boxes.map((item,index)=>{
                 if(item.image || item.title || item.description)
@@ -270,7 +285,6 @@ function getMediaUrlById(id)
             }):'There are no Items available.' }
             
         </div>
-    </aside>
     </div>
 
 :''}               

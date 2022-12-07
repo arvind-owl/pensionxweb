@@ -189,7 +189,11 @@ jQuery(function($) {
         }],
         lightboxDelegate: ".cbp-lightbox",
         lightboxGallery: true,
-    });  
+    }); 
+    
+    
+
+   
 });
 
 /* Wow

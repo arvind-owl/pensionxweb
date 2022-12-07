@@ -2,6 +2,53 @@ import Link from 'next/link';
 export default function Footer({ children, footerMenuItems }) {
     return (
         <>
+        <section id="contact" className="bg-color-blue">
+      <div className="container">
+        <div className="row">
+          <div className="col-md-4 col-sm-4 col-xs-12 text-center">
+            <div className="get-tuch">
+              <i className="fa fa-phone"></i>
+              <ul>
+                <li>
+                  <h4>Phone Number</h4>
+                </li>
+                <li>
+                  <p>(619) 515-6800, TTY: (888) 888-8888</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-4 col-xs-12 text-center">
+            <div className="get-tuch">
+              <i className="fa fa-home"></i>
+              <ul>
+                <li>
+                  <h4>2275 Rio Bonito Way UNIT 200, </h4>
+                </li>
+                <li>
+                  <p>San Diego, CA 92108</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div className="col-md-4 col-sm-4 col-xs-12 text-center">
+            <div className="get-tuch">
+              <i className="fa fa-envelope"></i>
+              <ul>
+                <li>
+                  <h4>Email Address</h4>
+                </li>
+                <li>
+                  <a href="#">
+                    <p>info@abcdef.com</p>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
             <footer id="footer" className="footer">
                 <div className="container pt-70 pb-40">
                     <div className="row">
@@ -43,6 +90,11 @@ export default function Footer({ children, footerMenuItems }) {
                     </div>
                 </div>
             </footer>
+            <script type="text/javascript">
+                            function googleTranslateElementInit() {
+                                new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element')
+                                }
+</script>
         </>
     );
 }

@@ -475,6 +475,19 @@ i {
 /* ----------- LOADER CSS ---------- */
 /* ================================= */
 
+h2, h3, h4 {
+  font-weight: 600!important;
+  margin: 0;
+}
+p {
+  margin: 0 0 10px!important;
+}
+#image-text .image-text-heading>h2 {
+  color: #fff;
+  font-size: 50px!important;
+  font-weight: 400;
+  font-family: Roboto;
+}
 .loader {
   position: fixed;
   z-index: 110000;
@@ -592,6 +605,9 @@ i {
   -webkit-animation-delay: 1.17s;
   -moz-animation-delay: 1.17s;
 }
+
+
+
 @keyframes cssload-fold-thecube {
   0%,
   10% {
@@ -2575,7 +2591,41 @@ nav.navbar.bootsnav ul.nav > li > a {
 .socials li {
   display: inline-block;
 }
+.leftSidebarHeading {
+  font-weight: 800;
+  font-size: 19px;
+  padding: 8px 0;
+  font-family: lorimerTwo;
+  font-stretch: condensed;
+  background-color: transparent;
+  color: #000000 !important;
+  border: 0;
+  margin: 0 !important;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--bs-nav-pills-border-radius);
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
+.submenus li {
+  font-weight: 700;
+  font-size: 21px;
+  list-style-type: none;
+}
 
+.submenus li a {
+  font-size: 19px;
+  padding: 8px 0;
+  font-family: lorimerTwo;
+  font-stretch: condensed;
+  background-color: transparent;
+  color: #000000 !important;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: var(--bs-nav-pills-border-radius);
+  font-weight: 500;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out;
+}
 .socials li a {
   color: #394d6b;
   border: 1px solid #394d6b;
@@ -4357,3 +4407,9 @@ section#work-area\ padding {
     font: normal normal bold 18px/50px Cabin;
   }
 }
+
+@media(min-width:100px) and (max-width:767px){
+  .how-we-work-section .item .arrow-img {
+    display: none;
+  }
+  }
