@@ -49,11 +49,11 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.legnth - 1)
     {
-      calNewTranslate = (postsData.legnth - 1) * -33;
+      calNewTranslate = (postsData.legnth - 1) * -33.33;
     }
     else
     {
-      calNewTranslate = -33 * (index - 1);
+      calNewTranslate = -33.33 * (index - 1);
     }
     
     setCurrentSlide(index);
@@ -73,12 +73,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = ((currentSlide - 2) * -33);
+      calNewTranslate = ((currentSlide - 2) * -33.33);
       setCurrentSlide(index - 1);
     }
     else
     {
-      calNewTranslate = translateVal - (-33);
+      calNewTranslate = translateVal - (-33.33);
       setCurrentSlide(index - 1);
     }
 
@@ -97,12 +97,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = (postsData.length - 1) * -33;
+      calNewTranslate = (postsData.length - 1) * -33.33;
       setCurrentSlide(0);
     }
     else
     {
-      calNewTranslate = -33 * (currentSlide);
+      calNewTranslate = -33.33 * (currentSlide);
       setCurrentSlide(index + 1);
     }
     
@@ -491,7 +491,7 @@ let date = dat.substring(6);
             {postsData &&
           			<div id="news-slider" className="owl-carousel">
                   <div className='owl-wrapper-outer'>
-                    <div className='owl-wrapper' style={{width: (postsData.length*33)+'%',left: '0px', display:'flex', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'%, 0px, 0px)'}}>
+                    <div className='owl-wrapper' style={{width: (postsData.length*33.33)+'%',left: '0px', display:'flex', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'%, 0px, 0px)'}}>
                    {postsData.length > 0 && postsData.map((post,index)=>{
                     return(
                           <div key={index} className="owl-item">

@@ -66,11 +66,10 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 					
 					if(parentPageId > 0)
 					{
-					//console.log(parentPageId);
+					
 					let subMenu = headerNewItem && headerNewItem.filter((Item)=>(Item.object_id==parentPageId)).map((Item)=>{return(Item.submenu?Item.submenu:Item.children)} );
 					subMenuData = subMenu && subMenu.length > 0 && subMenu[0];
-					// console.log(headerNewItem);
-					// console.log(subMenu);
+					
 					setSubMenuData(subMenuData);
 					}
 					if(parentPageId > 0)
@@ -189,7 +188,7 @@ function getMediaUrlById(id)
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
 			
-			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
+			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroudSize:'cover', backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div className="container text-uppercase text-center">
 					<div className="main-title">
 					<h1>{pageContent[0]?.acf?.page_header_title}</h1>
@@ -262,7 +261,7 @@ function getMediaUrlById(id)
 	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default'} dangerouslySetInnerHTML={createMarkup(page.content)} />
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
-<div className="col-xl-3 col-lg-3">
+<div className="col-xl-3 col-lg-3 rightSidebar">
         {pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
             pageContent[0]?.acf?.right_sidebar_boxes.map((item,index)=>{
                 if(item.image || item.title || item.description)

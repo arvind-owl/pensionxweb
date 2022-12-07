@@ -74,7 +74,7 @@ export default function Footer({ children, footerMenuItems }) {
                             {footerMenuItems && footerMenuItems.length > 0 && footerMenuItems.map((menu,index)=>{
                                 return (<li key={index}>
                                     <Link passHref href={'/pages'+menu.href}><a>{menu.linkText?menu.linkText:'#'}</a></Link>
-                                    </li>);
+                                    </li>)
                             })}
                         </ul>
                         </div>

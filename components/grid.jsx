@@ -34,7 +34,7 @@ export const PostGridItem = ({ content: post }) => {
 			</a>
 		</Link>
 	);
-};
+}
 
 export const PageGridItem = ({ content: page }) => {
 	const imgSrc = getUrlPath(page?.featuredImage?.node?.sourceUrl);

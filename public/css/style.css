@@ -2038,7 +2038,7 @@ section#upcoming {
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
-  padding: 0px 6px !important;
+  padding: 8px 6px !important;
   display: block;
   line-height: 22px;
   top: 1698px;
@@ -2139,12 +2139,18 @@ section#upcoming {
 }
 
 #news-slider .item {
-  margin: 0 20px;
+  margin: 0 28px;
   float: left;
 }
 #news-slider .owl-item
 {
-    width: 33%;
+    width: 33.33%;
+}
+.owl-prev i {
+  font-size: 50px!important;
+}
+.owl-next i {
+  font-size: 50px!important;
 }
 #news-slider .owl-controls .owl-page span {
   background: transparent;
@@ -2159,7 +2165,7 @@ section#upcoming {
 }
 .main-title h1 {
   font-weight: 700;
-  font-size: 36px!important;
+  font-size: 36px !important;
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -4019,7 +4025,7 @@ section#work-area\ padding {
 .stickyHeader a.navbar-brand {
   height: auto;
   width: 170px;
-  margin-top: 0px !important;
+  margin-top: 10px !important;
 }
 @media (min-width: 1200px) and (max-width: 15000px) {
   .justify-content-center {
@@ -4233,7 +4239,7 @@ section#work-area\ padding {
   }
 
   .Check-it-out {
-    width: 100%;
+   margin-top: 20px !important;
   }
   .retire-section {
     padding-bottom: 0;
@@ -4393,7 +4399,7 @@ section#work-area\ padding {
   }
   .main-title h1 {
     font-weight: bold;
-    font-size: 25px;
+    font-size: 25px !important;
   }
   .about-image .row .col-md-6:first-child {
     padding-right: 15px;
@@ -4463,5 +4469,21 @@ section#work-area\ padding {
   }
   nav.navbar.bootsnav.sticked .navbar-brand {
     padding: 11px 0!important;
+  }
+  .rightSidebar {
+    margin-top: 30px;
+  }
+  #image-text .image-text-heading>h2 {
+   
+    font-size: 35px!important;
+  }
+  .service {
+    min-height: auto !important;
+  }
+  .info_section, .page-main-section {
+    background-size: cover;
+    width: 100%;
+    background-attachment: fixed!important;
+    background-position: 50%;
   }
   }
