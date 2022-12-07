@@ -400,6 +400,7 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
+
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
