@@ -211,11 +211,11 @@ function getMediaUrlById(id)
 								return (
 								  <li key={i}>
 								  <Link passHref
-									className="d-block"
+									className="d-block menuHead"
 									href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
-									<a className="d-block" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
+									<a className="d-block menuHead" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
 								  </Link>
 								  {sub.children ?
 								  <div className="d-flex flex-column ">
