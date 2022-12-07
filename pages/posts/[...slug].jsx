@@ -14,13 +14,24 @@ export default function PostTemplate({ menuItems, post, headerMenuItems }) {
 	let [pageContent,setPageContent]= useState([]);
 	const [isAlreadyImages, setIsAlreadyImages]=useState([]);
 	const [allImages, setAllImage]=useState([]);
-
+	const [headerNewItem, setHeaderNewItem] = useState([]);
 	const [reloadItem, setReloadItem] = useState(0);
+	useEffect(()=>{
+		getMainMenus();
+
+	},[])
+	const getMainMenus = ()=>{
+		axios
+		.get(
+		  "https://dev-sdcera.pantheonsite.io/wp-json/menus/v1/menus/4/?nested=1"
+		)
+		.then((res) => setHeaderNewItem(res?.data));
+	}
 	useEffect(()=>{
 		
 		if(post)
 		{
-		 let uri = page?.slug;
+		 let uri = post?.uri;
 		 axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/posts?slug="+uri+"").then((res)=>{
 			
 			res?.data && res?.data.length > 0 && res?.data.map((pdata,index)=>{
@@ -121,7 +132,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
   
 }
 	return (
-		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
+		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
 			<h1>{post.title}</h1>
 			<div dangerouslySetInnerHTML={createMarkup(post.content)} />
 			
