@@ -263,7 +263,6 @@ function getMediaUrlById(id)
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-3">
-        <div className="row">
         {pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
             pageContent[0]?.acf?.right_sidebar_boxes.map((item,index)=>{
                 if(item.image || item.title || item.description)
@@ -285,7 +284,6 @@ function getMediaUrlById(id)
                 }
             }):'There are no Items available.' }
             
-        </div>
     </div>
 
 :''}               
