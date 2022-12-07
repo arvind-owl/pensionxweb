@@ -14,11 +14,23 @@ export default function Header({ children, headerMenuItems }) {
     function getUrlSlug(url)
             {
             let slug='';
-            let urlArray = url.split('/');
-            let urlLength = urlArray.length;
-            slug = urlArray[urlLength - 2];
+            let urlArray = url.split('//');
+            
+            
+            let urlNewArray = urlArray[1].split('/');
+            let urlLength = urlNewArray.length;
+            if(urlLength > 3)
+            {
+                slug = urlNewArray[urlLength - 3]+'/'+urlNewArray[urlLength - 2];
+            }
+            else{
+                slug = urlNewArray[urlLength - 2];
+            }
+            
             return slug;
             }
+
+
     return (
         <>
           <div className="loader">

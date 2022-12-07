@@ -22,6 +22,21 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     let [currentSlide, setCurrentSlide] = useState(0);
     let [translateVal, setTranslateVal]= useState(0);
 
+    const [headerNewItem, setHeaderNewItem] = useState([]);
+
+    useEffect(()=>{
+      getMainMenus();
+  
+    },[])
+    const getMainMenus = ()=>{
+      axios
+      .get(
+        "https://dev-sdcera.pantheonsite.io/wp-json/menus/v1/menus/4/?nested=1"
+      )
+      .then((res) => setHeaderNewItem(res?.data));
+    }
+
+
   useEffect(() => {
    
   },[reloadItem]);
@@ -34,11 +49,11 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.legnth - 1)
     {
-      calNewTranslate = (postsData.legnth - 1) * -456;
+      calNewTranslate = (postsData.legnth - 1) * -30;
     }
     else
     {
-      calNewTranslate = -456 * (index - 1);
+      calNewTranslate = -30 * (index - 1);
     }
     
     setCurrentSlide(index);
@@ -58,12 +73,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = ((currentSlide - 2) * -456);
+      calNewTranslate = ((currentSlide - 2) * -30);
       setCurrentSlide(index - 1);
     }
     else
     {
-      calNewTranslate = translateVal - (-456);
+      calNewTranslate = translateVal - (-30);
       setCurrentSlide(index - 1);
     }
 
@@ -82,12 +97,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = (postsData.length - 1) * -456;
+      calNewTranslate = (postsData.length - 1) * -30;
       setCurrentSlide(0);
     }
     else
     {
-      calNewTranslate = -456 * (currentSlide);
+      calNewTranslate = -30 * (currentSlide);
       setCurrentSlide(index + 1);
     }
     
@@ -95,7 +110,7 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     setReloadItem(!reloadItem);
   }
   useEffect(() => {
-    axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?slug=home").then((res) => setBanner(res?.data[0]));
+    axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?uri=home").then((res) => setBanner(res?.data[0]));
   
     }, []);
 
@@ -386,7 +401,7 @@ let date = dat.substring(6);
   return dateFormat;
 }
 	return (
-		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
+		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
       			<div className="container">
         			<div className="row">
@@ -452,7 +467,7 @@ let date = dat.substring(6);
 				</div>
 				<div className="col-lg-7 desktop-only">
 					<div className="thumb">
-						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} style={{maxWidth:'1920px'}}alt="img" />
+						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} style={{maxWidth:'1920px'}} alt="img" />
 					</div>
 				</div>
       		</div>
@@ -474,7 +489,7 @@ let date = dat.substring(6);
             {postsData &&
           			<div id="news-slider" className="owl-carousel">
                   <div className='owl-wrapper-outer'>
-                    <div className='owl-wrapper' style={{width: (postsData.length*456)+'px',left: '0px', display:'block', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'px, 0px, 0px)'}}>
+                    <div className='owl-wrapper' style={{width: (postsData.length*30)+'%',left: '0px', display:'block', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'%, 0px, 0px)'}}>
                    {postsData.length > 0 && postsData.map((post,index)=>{
                     return(
                           <div key={index} className="owl-item">

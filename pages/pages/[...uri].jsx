@@ -11,6 +11,7 @@ import React, { useState, useEffect } from "react";
 
 
 export default function PageTemplate({ menuItems, page, headerMenuItems }) {
+	
 	let [pageContent,setPageContent]= useState([]);
 	
 	const [isAlreadyImages, setIsAlreadyImages]=useState([]);
@@ -18,11 +19,28 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 	const [subMenuData, setSubMenuData] =useState([]);
 	const [reloadItem, setReloadItem] = useState(0);
 	const [parentPageData, setParentPageData] = useState([]);
+
+
+	const [headerNewItem, setHeaderNewItem] = useState([]);
 	useEffect(()=>{
-		
+		getMainMenus();
+
+	},[])
+	const getMainMenus = ()=>{
+		axios
+		.get(
+		  "https://dev-sdcera.pantheonsite.io/wp-json/menus/v1/menus/4/?nested=1"
+		)
+		.then((res) => setHeaderNewItem(res?.data));
+	}
+	useEffect(()=>{
+
 		if(page)
 		{
-		 let uri = page?.slug;
+		
+		 let uriArray = page?.uri.split('/');
+		 let uri = uriArray[uriArray.length - 2];
+		
 		 axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?slug="+uri+"").then((res)=>{
 			
 			res?.data && res?.data.length > 0 && res?.data.map((pdata,index)=>{
@@ -44,10 +62,12 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 					pageContent= (res?.data);
 					let subMenuData = [];
 					let parentPageId = pageContent[0]?.parent?pageContent[0]?.parent:pageContent[0]?.id;
+					
 					if(parentPageId > 0)
 					{
-					let subMenu = headerMenuItems && headerMenuItems.filter((Item)=>(Item.object_id==parentPageId)).map((Item)=>{return(Item.submenu)} );
+					let subMenu = headerNewItem && headerNewItem.filter((Item)=>(Item.object_id==parentPageId)).map((Item)=>{return(Item.submenu?Item.submenu:Item.children)} );
 					subMenuData = subMenu && subMenu.length > 0 && subMenu[0];
+					
 					setSubMenuData(subMenuData);
 					}
 					if(parentPageId > 0)
@@ -74,6 +94,7 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
 		}
 	},[page]);
 
+	
 	const getDataById = async(parentPageId) => {
 		try {
 			   axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages/"+parentPageId+"").then((res)=>{
@@ -120,7 +141,7 @@ export default function PageTemplate({ menuItems, page, headerMenuItems }) {
       }
 function getMediaUrlById(id)
 {
-  let isAlready = false;
+  		let isAlready = false;
         isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
           
             if(item==id)
@@ -161,9 +182,8 @@ function getMediaUrlById(id)
             }
   
 }
-	
 	return (
-		<Layout footerMenu={menuItems} headerMenu={headerMenuItems}>
+		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
 			
 			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div className="container text-uppercase text-center">
