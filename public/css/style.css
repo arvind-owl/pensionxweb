@@ -2144,7 +2144,7 @@ section#upcoming {
 }
 #news-slider .owl-item
 {
-    width: 456px;
+    width: 33%;
 }
 #news-slider .owl-controls .owl-page span {
   background: transparent;
