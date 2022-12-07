@@ -507,8 +507,11 @@ p {
   text-align: left;
   font: normal normal bold 20px/20px Cabin!important;
   letter-spacing: 0px;
-  color: #292929;
+  color: #ffffff;
   opacity: 1;
+}
+.AsideCards p {
+  color: #ffffff;
 }
 .AsideCards {
   padding: 20px;
@@ -789,6 +792,10 @@ ul.submenus_submenus {
 #header .wrap-sticky .nav.navbar-nav.navbar-right {
   border-top: 1px solid rgba(255, 255, 255, 0.5);
 }
+.sticked .navbar-nav {
+  margin: 0px -15px!important;
+  padding: 8px 0;
+}
 #header .wrap-sticky .bootsnav ul.nav > li:last-child {
   margin-right: 0 !important;
 }
@@ -842,7 +849,10 @@ ul.submenus_submenus {
 }
 #header nav.navbar.bootsnav.navbar-sticky .navbar-brand {
   display: block;
-  margin-top: -95px;
+  margin-top: -88px;
+}
+nav.navbar.bootsnav {
+  border-bottom: 0px solid #e0e0e0!important;
 }
 /* =========== NAVIGATION ============ */
 nav.bootsnav.brand-center .navbar-collapse .col-half.right {
@@ -866,7 +876,7 @@ nav.navbar.bootsnav.navbar-sticky .navbar-brand {
 }
 nav.navbar.bootsnav.sticked .navbar-brand {
   display: inline-block;
-  padding: 10px 0;
+  padding: 0;
   width: 180px;
 }
 nav.navbar.bootsnav.sticked .navbar-nav {
@@ -1736,11 +1746,11 @@ nav.navbar.bootsnav
 }
 
 .Check-it-out:hover {
-  background: transparent;
+  background: transparent !important;
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
-  color: #394d6b;
+  color: #000000;
 }
 
 .btn_fill:hover {
@@ -2874,6 +2884,7 @@ nav.navbar.bootsnav ul.nav > li > a {
 }
 .leftSidebarSection {
   margin: 50px 0;
+  padding-left:50px;
 }
 .feature_box .icon:after {
   bottom: -8px;
@@ -2941,7 +2952,7 @@ nav.navbar.bootsnav ul.nav > li > a {
 }
 .services-page-box .fa {
   overflow: hidden;
-  font-size: 60px;
+  font-size: 60px !important;
   position: relative;
   display: block;
   color: #fff;
@@ -3189,6 +3200,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   padding: 25px 15px;
   border: 1px solid #eeeeee;
   background: #fafafa;
+  min-height: 190px;
 }
 
 .service__icon {
@@ -3275,17 +3287,19 @@ nav.navbar.bootsnav ul.nav > li > a {
   height: 120px;
   width: 120px;
   display: inline-block;
-  overflow: hidden;
   position: relative;
 }
-
+.feature__icon i {
+  font-size: 50px!important;
+  margin-top: 18px;
+}
 .feature__content p {
   margin-bottom: 0;
   color: #ffffff;
 }
 
 .main-about {
-  padding-top: 160px;
+  padding-top: 90px;
   padding-bottom: 70px;
 }
 
@@ -3851,7 +3865,7 @@ section.features-area-education {
 }
 
 .white_content i {
-  font-size: 45px;
+  font-size: 45px !important;
 }
 
 .features-img {
@@ -4443,5 +4457,8 @@ section#work-area\ padding {
 @media(min-width:100px) and (max-width:767px){
   .how-we-work-section .item .arrow-img {
     display: none;
+  }
+  .about-sev-tag ul li {
+    width: 100%;
   }
   }
