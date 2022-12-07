@@ -1,6 +1,6 @@
 import axios from "axios";
 import Link from 'next/link';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useRef } from "react";
 export default function Header({ children, headerMenuItems }) {
     const [headerItem, setHeaderItem] = useState([]);
     useEffect(() => {
@@ -30,6 +30,41 @@ export default function Header({ children, headerMenuItems }) {
             return slug;
             }
 
+            function createMarkup(html) {
+                return { __html: html };
+              }
+
+
+              function translateLanguage(lang) {
+                googleTranslateElementInit();
+                const frame = document.getElementsByClassName("goog-te-menu-frame")[0];
+                if (!frame) return;
+                const items = frame.contentDocument.documentElement.querySelectorAll(
+                  ".goog-te-menu2-item"
+                );
+                items.forEach((element) => {
+                  if (lang == element.getElementsByTagName("span")[1].innerText)
+                    element.click();
+                });
+                return false;
+              }
+            
+              function googleTranslateElementInit() {
+                if (!google) return;
+                new (google.translate.TranslateElement)(
+                  {
+                    pageLanguage: "en",
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+                    autoDisplay: false
+                  },
+                  "google_translate_element"
+                );
+              }
+              useEffect(() => {
+                let script = document.createElement("script");
+                script.src = `//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
+                document.body.insertBefore(script, document.body.childNodes[0]);
+              }, []);
 
     return (
         <>
@@ -87,7 +122,7 @@ export default function Header({ children, headerMenuItems }) {
                             <a className="navbar-brand  desktop-only"> <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" /></a>
                             </Link>
                             <Link passHref className="navbar-brand mobile-only" href="/">
-                            <a className="navbar-brand  desktop-only"><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
+                            <a className="navbar-brand  mobile-only"><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
                             </Link>
                         </div>
          
@@ -104,14 +139,34 @@ export default function Header({ children, headerMenuItems }) {
 
                         {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
-                                        <li key={index} className={val.children && val.children.length > 0 ?"dropdown desktop-only":"desktop-only"} >
-                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown">{val.title?val.title:'#'}</a></Link>
+                                        <li key={index} className={val.children && val.children.length > 0 ?"dropdown ":""} >
+                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" dangerouslySetInnerHTML={createMarkup(val.title?val.title:'#')}></a></Link>
                                         {/* {'/'+val?.object+'/'+val?.object_id} */}
                                         {val.children &&
                                         <ul className="dropdown-menu">
                                              {val.children.length > 0 && val.children.map((sub, i) => {
                                                 return (
-                                                    <li key={i}><Link passHref href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}><a>{sub.title?sub.title:'#'}</a></Link></li>
+                                                    <li key={i}><Link passHref href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}><a dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a></Link>
+                                                    <div className="d-flex flex-column ">
+                                                        {sub.children && 
+                                                            <ul className="submenus_submenus">
+                                                            {sub.children && sub.children.length && sub.children.map((subsub, i) => {
+                                                            return (
+                                                                <li key={i}>
+                                                                <Link passHref
+                                                                className="d-block text-white HeaderDropDownListItem "
+                                                                href={'/'+subsub?.object+'s/'+getUrlSlug(subsub?.url)}
+                                                                key={i}
+                                                                >
+                                                                <a className="d-block text-white HeaderDropDownListItem " dangerouslySetInnerHTML={createMarkup(subsub.title?subsub.title:'#')}></a>
+                                                                </Link>
+                                                                </li>
+                                                        );
+                                                        })}
+                                                </ul>}
+							  </div>
+                                                    
+                                                    </li>
                                                 );
                                             })}
                                             </ul>
@@ -148,6 +203,9 @@ export default function Header({ children, headerMenuItems }) {
                                     </ul>
                                 </li>
                             </ul>
+                            <div className="googleTranlatorSection">
+                            <div id="google_translate_element"></div>
+                                </div>
                         </div>
                     </div>
                 </nav>
@@ -165,3 +223,65 @@ export default function Header({ children, headerMenuItems }) {
     );
 
 }
+
+
+const CustomSelect = ({ onChange }) => {
+    const [lang, setLang] = useState(LANGS[0]);
+    const [isShow, setIsShow] = useState(false);
+    const ref = useRef(null);
+    useClickOutside(ref, () => setIsShow(false));
+    return (
+      <div className="w-24 cursor-pointer relative">
+        <div onClick={() => setIsShow(true)} ref={ref}>
+          <span className={`fi ${lang.icon}`} /> {` ${lang.name}`}
+        </div>
+        <div
+          className={`border border-b-0 absolute top-6 left-0 bg-white ${!isShow && "hidden"
+            }`}
+        >
+          {LANGS.map((lang, index) => (
+            <div
+              key={index}
+              className="border-b"
+              onClick={() => {
+                setLang(lang);
+                onChange(lang);
+              }}
+            >
+              <span className={`fi ${lang.icon}`} />
+              {` ${lang.name}`}
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  };
+  
+  const LANGS = [
+    {
+      name: "English",
+      icon: "fi-us"
+    },
+    {
+      name: "French",
+      icon: "fi-fr"
+    },
+    { name: "Spanish", 
+    icon: "fi-es" },
+    { name: "Hindi", 
+    icon: "fi-in" }
+  ];
+  
+  const useClickOutside = (ref, callback) => {
+    const handleClick = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) {
+        callback(e);
+      }
+    };
+    React.useEffect(() => {
+      document.addEventListener("click", handleClick);
+      return () => {
+        document.removeEventListener("click", handleClick);
+      };
+    });
+  };
