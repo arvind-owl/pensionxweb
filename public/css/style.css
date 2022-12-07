@@ -2144,7 +2144,7 @@ section#upcoming {
 }
 #news-slider .owl-item
 {
-    width: 456px;
+    width: 33%;
 }
 #news-slider .owl-controls .owl-page span {
   background: transparent;
@@ -4460,5 +4460,8 @@ section#work-area\ padding {
   }
   .about-sev-tag ul li {
     width: 100%;
+  }
+  nav.navbar.bootsnav.sticked .navbar-brand {
+    padding: 11px 0!important;
   }
   }
