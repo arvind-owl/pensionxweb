@@ -3729,7 +3729,7 @@ section.features-area-education {
   opacity: 1;
   font-weight: 500;
   width: 50%;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .course-img {
