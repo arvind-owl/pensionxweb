@@ -1990,18 +1990,20 @@ section#upcoming {
   opacity: 1;
   font: normal normal bold 50px/55px Cabin;
 }
-
+.features-image img {
+  display: inline-block!important;
+}
 .Check-it-out {
   text-align: left;
   font: normal normal bold 18px/22px Cabin;
   letter-spacing: 0px;
   color: #ffffff;
-  background: #394d6b;
+  background: #394d6b !important;
   box-shadow: 0px 3px 6px #00000029;
   border: 2px solid #394d6b;
   border-radius: 6px;
   opacity: 1;
-  padding: 10px 6px;
+  padding: 0px 6px !important;
   display: block;
   line-height: 22px;
   top: 1698px;
@@ -3541,8 +3543,8 @@ section.features-area-education {
   flex-wrap: wrap;
 }
 .features-title {
-  font-weight: 700;
-  font-size: 46px;
+  font-weight: 700 !important;
+  font-size: 46px !important;
   line-height: 54px;
   text-align: center;
   color: #07294d;
