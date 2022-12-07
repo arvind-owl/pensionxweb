@@ -606,8 +606,33 @@ p {
   -moz-animation-delay: 1.17s;
 }
 
+h5.leftSidebarHeading {
+  text-align: left;
+  font: normal normal bold 21px/28px Cabin!important;
+  letter-spacing: -0.42px;
+  color: #292929;
+  opacity: 1;
+}
 
-
+.submenus .menuHead {
+  text-align: left;
+  font: normal normal bold 18px/20px Cabin!important;
+  letter-spacing: 0px;
+  color: #394D6B;
+  opacity: 1;
+}
+.submenus_submenus .HeaderDropDownListItem {
+  text-align: left;
+  font: normal normal normal 14px/20px Libre Franklin!important;
+  letter-spacing: 0px;
+  color: #292929;
+  opacity: 1;
+}
+ul.submenus_submenus {
+  border-left: 2px solid #D6DBDE;
+  opacity: 1;
+  padding: 0 25px;
+}
 @keyframes cssload-fold-thecube {
   0%,
   10% {
@@ -3549,6 +3574,7 @@ section.features-area-education {
   text-align: center;
   color: #07294d;
 }
+
 .features-title span {
   color: #aca196;
   display: contents;
@@ -3658,6 +3684,8 @@ section.features-area-education {
 .choose-content p {
   color: #fff;
   margin-bottom: 20px;
+  text-align: center;
+  display: inline-block;
 }
 
 .default-btn {
@@ -3701,7 +3729,7 @@ section.features-area-education {
   opacity: 1;
   font-weight: 500;
   width: 50%;
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .course-img {

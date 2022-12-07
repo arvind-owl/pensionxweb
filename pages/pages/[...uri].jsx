@@ -211,11 +211,11 @@ function getMediaUrlById(id)
 								return (
 								  <li key={i}>
 								  <Link passHref
-									className="d-block"
+									className="d-block menuHead"
 									href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}
 									key={i}
 								  >
-									<a className="d-block" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
+									<a className="d-block menuHead" dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a>
 								  </Link>
 								  {sub.children ?
 								  <div className="d-flex flex-column ">
@@ -263,7 +263,6 @@ function getMediaUrlById(id)
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-3">
-        <div className="row">
         {pageContent[0]?.acf?.right_sidebar_boxes && pageContent[0]?.acf?.right_sidebar_boxes.length > 0 ? 
             pageContent[0]?.acf?.right_sidebar_boxes.map((item,index)=>{
                 if(item.image || item.title || item.description)
@@ -285,7 +284,6 @@ function getMediaUrlById(id)
                 }
             }):'There are no Items available.' }
             
-        </div>
     </div>
 
 :''}               
