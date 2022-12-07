@@ -3684,6 +3684,8 @@ section.features-area-education {
 .choose-content p {
   color: #fff;
   margin-bottom: 20px;
+  text-align: center;
+  display: inline-block;
 }
 
 .default-btn {
