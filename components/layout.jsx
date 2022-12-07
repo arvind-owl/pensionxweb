@@ -21,5 +21,5 @@ export default function Layout({ children, footerMenu, headerMenu }) {
 			<main className="mb-auto">{children}</main>
 			<Footer footerMenuItems={footerMenuItems} />
 		</div>
-	);
+	)
 }
