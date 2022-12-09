@@ -49,21 +49,21 @@ export default function Header({ children, headerMenuItems }) {
                 return false;
               }
             
-              function googleTranslateElementInit() {
-                if (!google) return;
-                new (google.translate.TranslateElement)(
-                  {
-                    pageLanguage: "en",
-                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
-                    autoDisplay: false
-                  },
-                  "google_translate_element"
-                );
-              }
+              const googleTranslateElementInit = () => {
+
+                new window.google.translate.TranslateElement({
+                    pageLanguage: 'en',
+                    includedLanguages : "en,ms,ta,zh-CN,in", // include this for selected languages
+                    layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+                },
+                'google_translate_element');
+        
+            }
               useEffect(() => {
-                let script = document.createElement("script");
-                script.src = `//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit`;
-                document.body.insertBefore(script, document.body.childNodes[0]);
+                var addScript = document.createElement('script');
+                addScript.setAttribute('src', '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit');
+                document.body.appendChild(addScript);
+                window.googleTranslateElementInit = googleTranslateElementInit;
               }, []);
 
     return (
@@ -169,36 +169,11 @@ export default function Header({ children, headerMenuItems }) {
                                     })}
                                 
                                 
-                                <li className="dropdown desktop-only">
-                                    <a className="list-items dropdown-toggle" href="#" data-toggle="dropdown"> 실A Translate </a>
-                                    <ul className="dropdown-menu">
-                                        <li>
-                                            <a href="#">English</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Spanish</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">French</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Lorem Ipsum</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Lorem Ipsum</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Lorem Ipsum</a>
-                                        </li>
-                                        <li>
-                                            <a href="#">Lorem Ipsum</a>
-                                        </li>
-                                    </ul>
+                                <li className="desktop-only">
+                                <div id="google_translate_element" > </div>
                                 </li>
                             </ul>
-                            <div className="googleTranlatorSection">
-                            <div id="google_translate_element"></div>
-                                </div>
+                          
                         </div>
                     </div>
                 </nav>

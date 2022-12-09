@@ -49,11 +49,11 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.legnth - 1)
     {
-      calNewTranslate = (postsData.legnth - 1) * -33.33;
+      calNewTranslate = (postsData.legnth - 1) * -25;
     }
     else
     {
-      calNewTranslate = -33.33 * (index - 1);
+      calNewTranslate = -25 * (index - 1);
     }
     
     setCurrentSlide(index);
@@ -73,12 +73,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = ((currentSlide - 2) * -33.33);
+      calNewTranslate = ((currentSlide - 2) * -25);
       setCurrentSlide(index - 1);
     }
     else
     {
-      calNewTranslate = translateVal - (-33.33);
+      calNewTranslate = translateVal - (-25);
       setCurrentSlide(index - 1);
     }
 
@@ -97,12 +97,12 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     }
     else if(index == postsData.length - 1)
     {
-      calNewTranslate = (postsData.length - 1) * -33.33;
+      calNewTranslate = (postsData.length - 1) * -25;
       setCurrentSlide(0);
     }
     else
     {
-      calNewTranslate = -33.33 * (currentSlide);
+      calNewTranslate = -25 * (currentSlide);
       setCurrentSlide(index + 1);
     }
     
