@@ -2016,7 +2016,20 @@ section#upcoming {
   opacity: 1;
   padding: 100px !important;
 }
-
+div#\:0\.targetLanguage {
+  display: flex;
+}
+.goog-te-menu-value {
+  text-decoration: none;
+  color: #0000cc;
+  white-space: nowrap;
+  margin-left: 4px;
+  margin-right: 4px;
+  display: flex;
+}
+div#google_translate_element {
+  margin-top: 12px;
+}
 .section-title h2 {
   margin-bottom: 22px;
   text-align: left;

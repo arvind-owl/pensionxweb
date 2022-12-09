@@ -53,7 +53,6 @@ export default function Header({ children, headerMenuItems }) {
 
                 new window.google.translate.TranslateElement({
                     pageLanguage: 'en',
-                    includedLanguages : "en,ms,ta,zh-CN,in", // include this for selected languages
                     layout: google.translate.TranslateElement.InlineLayout.SIMPLE
                 },
                 'google_translate_element');
