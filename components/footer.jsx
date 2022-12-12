@@ -4,6 +4,7 @@ import React, { useState, useEffect,useRef } from "react";
 export default function Footer({ children, footerMenuItems }) {
   const [siteLogo, setSiteLogo] = useState([]);
   
+  const [reloadItem, setReloadItem] = useState(0);
   const [allImages, setAllImage]=useState([]);
   const [isAlreadyImages, setIsAlreadyImages]=useState([]);
   useEffect(() => {

@@ -5,6 +5,8 @@ export default function Header({ children, headerMenuItems }) {
     const [headerItem, setHeaderItem] = useState([]);
     const [siteLogo, setSiteLogo] = useState([]);
     const [allImages, setAllImage]=useState([]);
+    
+  const [reloadItem, setReloadItem] = useState(0);
   const [isAlreadyImages, setIsAlreadyImages]=useState([]);
     useEffect(() => {
         axios
