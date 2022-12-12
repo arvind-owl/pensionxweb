@@ -270,7 +270,7 @@ function getMediaUrlById(id)
                     <div className='asideBox' key={index}>
                     <Link passHref href={item.url?item.url:'/'} className="AsideCardsMain" ><a >
                     <div className="col ">
-                        { item.image ? <img src={getImageUrl(item.image)} alt="" />:'' }
+                        { item.image ? <img src={getImageUrl(item.image).toString()} alt="" />:'' }
                     <div className="AsideCards" style={{'background':item.background_color?item.background_color:''}}>
                         <h5>{item.title}</h5>
                         <p dangerouslySetInnerHTML={createMarkup(item.description)} />

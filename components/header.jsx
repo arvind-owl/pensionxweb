@@ -3,6 +3,9 @@ import Link from 'next/link';
 import React, { useState, useEffect,useRef } from "react";
 export default function Header({ children, headerMenuItems }) {
     const [headerItem, setHeaderItem] = useState([]);
+    const [siteLogo, setSiteLogo] = useState([]);
+    const [allImages, setAllImage]=useState([]);
+  const [isAlreadyImages, setIsAlreadyImages]=useState([]);
     useEffect(() => {
         axios
           .get(
@@ -10,7 +13,79 @@ export default function Header({ children, headerMenuItems }) {
           )
           .then((res) => setHeaderItem(res?.data));
       }, []);
-    
+      useEffect(() => {
+        axios
+          .get(
+            "https://dev-sdcera.pantheonsite.io/wp-json/"
+          )
+          .then((res) => setSiteLogo(res?.data));
+      }, []);
+
+
+      const  getImageUrl=(imageId)=> {
+        let isAlready = false;
+        isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
+          
+            if(item==imageId)
+            {
+                isAlready = true;
+            }
+            
+        });
+        if(!isAlready)
+            {
+              getMediaUrlById(imageId);
+            }
+        let srcurl = allImages && allImages.filter((item)=>item.id==imageId);
+     
+        let url = srcurl && srcurl.length > 0  && srcurl[0] && srcurl[0].Url;
+        return url;
+
+      }
+      const getMediaUrlById=(id)=>{
+       
+  let isAlready = false;
+        isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
+          
+            if(item==id)
+            {
+                isAlready = true;
+            }
+            
+        });
+      
+        if(!isAlready)
+            {
+              setIsAlreadyImages((arr) => [...arr,id]);
+axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
+  
+  if(res)
+  {
+   let pdata = res.data;
+  let cont = pdata?.content?.rendered;
+  pdata.content = cont;
+
+  let excerpt = pdata?.excerpt?.rendered;
+  pdata.excerpt = excerpt;
+
+  let guid = pdata?.guid?.rendered;
+  pdata.guid = guid;
+
+  let title = pdata?.title?.rendered;
+  pdata.title = title;
+
+  let newImageArray = {'id':id,"Url":pdata.guid};
+  
+   setAllImage((arr) => [...arr,newImageArray]);
+    setReloadItem(!reloadItem);
+  }
+})
+            }
+  
+}
+
+
+
     function getUrlSlug(url)
             {
             let slug='';
@@ -111,10 +186,10 @@ export default function Header({ children, headerMenuItems }) {
                                 <i className="fa fa-bars"></i>
                             </button>
                             <Link passHref className="navbar-brand  desktop-only" href="/">
-                            <a className="navbar-brand  desktop-only"> <img src="/img/logo.png" className="img-fluid desktop-only" alt="logo" /></a>
+                            <a className="navbar-brand  desktop-only"> <img src={getImageUrl(siteLogo.site_logo).toString()} className="img-fluid desktop-only" alt="logo" /></a>
                             </Link>
                             <Link passHref className="navbar-brand mobile-only" href="/">
-                            <a className="navbar-brand  mobile-only"><img src="/img/mobile-logo.png" className="img-fluid mobile-only" alt="logo" /></a>
+                            <a className="navbar-brand  mobile-only"><img src={getImageUrl(siteLogo.site_logo).toString()} className="img-fluid mobile-only" alt="logo" /></a>
                             </Link>
                         </div>
          

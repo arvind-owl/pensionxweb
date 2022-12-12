@@ -434,8 +434,8 @@ let date = dat.substring(6);
                 {banner?.acf?.get_started_content && banner?.acf?.get_started_content.length > 0 && banner?.acf?.get_started_content.map((ele,i)=>{
                     return (<div key={i} className="col-md-4 col-lg-3 col-xs-6 text-center">
             				<div className="get-started-content top40">
-              					<img className="img-fluid default" src={ele?.image && getImageUrl(ele?.image)} alt="image" />
-              					<img className="img-fluid hover" src={ele?.hover_image && getImageUrl(ele?.hover_image)} alt="image" />
+              					<img className="img-fluid default" src={ele?.image && getImageUrl(ele?.image).toString()} alt="image" />
+              					<img className="img-fluid hover" src={ele?.hover_image && getImageUrl(ele?.hover_image).toString()} alt="image" />
                         <p  dangerouslySetInnerHTML={{
                 __html: ele?.title,
               }} />
@@ -451,7 +451,7 @@ let date = dat.substring(6);
 			<div className="row no-gutters">
 				<div className="col-lg-7 mobile-only">
 					<div className="thumb">
-						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} alt="img" />
+						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image).toString()} alt="img" />
 					</div>
 				</div>
 				<div className="col-lg-4 align-self-center">
@@ -469,7 +469,7 @@ let date = dat.substring(6);
 				</div>
 				<div className="col-lg-7 desktop-only">
 					<div className="thumb">
-						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image)} style={{maxWidth:'1920px'}} alt="img" />
+						<img src={banner?.acf?.how_much_image && getImageUrl(banner?.acf?.how_much_image).toString()} style={{maxWidth:'1920px'}} alt="img" />
 					</div>
 				</div>
       		</div>
@@ -498,7 +498,7 @@ let date = dat.substring(6);
                             <div className='item'>
                             <div className="news_item bottom40">
                                     <div className="image">
-                                      <img src={post?.featured_media && getImageUrl(post?.featured_media)} alt="listin" className="img-fluid" />
+                                      <img src={post?.featured_media && getImageUrl(post?.featured_media).toString()} alt="listin" className="img-fluid" />
                                     </div>
                                     <div className="news_content">
                                       <div className="news_text">
@@ -746,7 +746,7 @@ let date = dat.substring(6);
     <section className="life-events-img">
       <div className="container-fluid">
         <div className="row">
-          <img className="img-fluid" src={banner?.acf?.life_event_image && getImageUrl(banner?.acf?.life_event_image)} alt="" />
+          <img className="img-fluid" src={banner?.acf?.life_event_image && getImageUrl(banner?.acf?.life_event_image).toString()} alt="" />
         </div>
       </div>
     </section>
