@@ -849,7 +849,7 @@ ul.submenus_submenus {
 }
 #header nav.navbar.bootsnav.navbar-sticky .navbar-brand {
   display: block;
-  margin-top: -88px;
+  margin-top: -68px;
 }
 nav.navbar.bootsnav {
   border-bottom: 0px solid #e0e0e0!important;
@@ -1407,7 +1407,9 @@ nav.navbar.bootsnav
 .mb20 form a.button:hover {
   color: #fff;
 }
-
+.navbar-brand>img, #footer .logo {
+  width: 260px;
+}
 @keyframes Animation {
   0% {
     opacity: 0.4;
