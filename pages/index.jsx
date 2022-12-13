@@ -637,11 +637,9 @@ let date = dat.substring(6);
               </div>
           </div>
         </div>
-        <div className="col-lg-12 text-center">
-        <p  dangerouslySetInnerHTML={{
+        <div className="col-lg-12 text-center" dangerouslySetInnerHTML={{
                 __html: banner?.acf?.upcoming_event_extra_content,
-              }} />
-         
+              }}>         
         </div>
       </div>
     </section>
@@ -650,75 +648,41 @@ let date = dat.substring(6);
         <div className="row">
           <div className="col-sm-1 col-md-2"></div>
           <div className="col-xs-12 col-sm-10 col-md-8 text-center">
-            <h2>Upcoming</h2>
+            <h2>{banner?.acf?.upcoming_event_title}</h2>
           </div>
           <div className="col-sm-1 col-md-2"></div>
         </div>
         <div className="row mb-4">
-          <div className="col-lg-12 text-center">
-            <ul className="upcoming-events">
-              <li>
-                <i className="fa fa-file"></i> Barcelona Food truck Festival 2018
-              </li>
-              <li>
-                <i className="fa fa-calendar"></i> Full Calendar
-              </li>
-            </ul>
-          </div>
+          <div className="col-lg-12 text-center" dangerouslySetInnerHTML={{
+                __html: banner?.acf?.upcoming_event_extra_content,
+              }} />
         </div>
         <div className="row">
-          <div className="col-md-4">
-            <div className="event-item">
-              <div className="event-image">
-                <div className="post-date">
-                  <small className="month">OCT</small>
-                  <br/>
-                  <span className="date">10</span>
-                </div>
-              </div>
-              <div className="event-content">
-                <div className="event-title mb-15">
-                  <h3 className="title"> Barcelona Food truck Festival 2018 </h3>
-                  <span className="ticket-price yellow-color">10:30am PST</span>
-                </div>
-              </div>
+       
+{eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
+
+return( 
+<div key={ind} className="col-md-4">
+        <div className="event-item">
+          <div className="event-image">
+            <div className="post-date">
+              <small className="month">{getCovertMonthFormat(event?.acf.event_date)}</small>
+              <br/>
+              <span className="date">{getCovertDateFormat(event?.acf.event_date)}</span>
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="event-item">
-              <div className="event-image">
-                <div className="post-date">
-                  <small className="month">OCT</small>
-                  <br/>
-                  <span className="date">10</span>
-                </div>
-              </div>
-              <div className="event-content">
-                <div className="event-title mb-15">
-                  <h3 className="title"> Barcelona Food truck Festival 2018 </h3>
-                  <span className="ticket-price yellow-color">10:30am PST</span>
-                </div>
-              </div>
+          <div className="event-content">
+            <div className="event-title mb-15">
+              <h3 className="title"> {event?.title} </h3>
+              <span className="ticket-price yellow-color">{getCovertTimeFormat(event?.acf.event_time)} PST</span>
+              
             </div>
           </div>
-          <div className="col-md-4">
-            <div className="event-item">
-              <div className="event-image">
-                <div className="post-date">
-                  <small className="month">OCT</small>
-                  <br/>
-                  <span className="date">10</span>
-                </div>
-              </div>
-              <div className="event-content">
-                <div className="event-title mb-15">
-                  <h3 className="title"> Board of Directors Meeting </h3>
-                  <span className="ticket-price yellow-color">10:30am PST</span>
-                  <span className="ticket-price calcelled">Cancelled</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        </div>
+      </div>
+)
+
+})}
         </div>
       </div>
     </section>
