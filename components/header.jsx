@@ -209,13 +209,13 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                         {headerItem && headerItem.length > 0  && headerItem.map((val, index) => {
                                     return (
                                         <li key={index} className={val.children && val.children.length > 0 ?"dropdown ":""} >
-                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+val?.object+'s/'+getUrlSlug(val?.url)}><a className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" dangerouslySetInnerHTML={createMarkup(val.title?val.title:'#')}></a></Link>
+                                            <Link passHref className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" href={'/'+getUrlSlug(val?.url)}><a className={val.children && val.children.length > 0 ? 'list-items dropdown-toggle':"list-items"} data-toggle="dropdown" dangerouslySetInnerHTML={createMarkup(val.title?val.title:'#')}></a></Link>
                                         {/* {'/'+val?.object+'/'+val?.object_id} */}
                                         {val.children &&
                                         <ul className="dropdown-menu">
                                              {val.children.length > 0 && val.children.map((sub, i) => {
                                                 return (
-                                                    <li key={i}><Link passHref href={'/'+sub?.object+'s/'+getUrlSlug(sub?.url)}><a dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a></Link>
+                                                    <li key={i}><Link passHref href={'/'+getUrlSlug(sub?.url)}><a dangerouslySetInnerHTML={createMarkup(sub.title?sub.title:'#')}></a></Link>
                                                     <div className="d-flex flex-column ">
                                                         {sub.children && 
                                                             <ul className="submenus_submenus">
@@ -224,7 +224,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                                                                 <li key={i}>
                                                                 <Link passHref
                                                                 className="d-block text-white HeaderDropDownListItem "
-                                                                href={'/'+subsub?.object+'s/'+getUrlSlug(subsub?.url)}
+                                                                href={'/'+getUrlSlug(subsub?.url)}
                                                                 key={i}
                                                                 >
                                                                 <a className="d-block text-white HeaderDropDownListItem " dangerouslySetInnerHTML={createMarkup(subsub.title?subsub.title:'#')}></a>
