@@ -3,6 +3,7 @@ import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
+import dayjs from 'dayjs';
 import Layout from '../components/layout';
 import Link from 'next/link';
 import { getFooterMenu,getHeaderMenu } from '../lib/Menus';
@@ -148,7 +149,7 @@ export default function Home({ menuItems, posts, headerMenuItems }) {
     {
     axios
     .get(
-      "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/event?per_page="+banner?.acf?.upcoming_event_no_of_events+"&categories="+categoriesIds
+      "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/event?per_page="+banner?.acf?.upcoming_event_no_of_events+"&order=desc&status=publish&categories="+categoriesIds
     )
     .then((res) =>{
       let allupdate = false;
@@ -209,7 +210,7 @@ else
     {
       axios
       .get(
-        "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/posts?per_page="+banner?.acf?.stay_informed_no_of_posts+"&categories="+categoriesIds
+        "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/posts?per_page="+banner?.acf?.stay_informed_no_of_posts+"&order=desc&status=publish&categories="+categoriesIds
       )
       .then((res) => { 
         let allupdate = false;
@@ -488,6 +489,7 @@ let date = dat.substring(6);
 					</div>
 				</div>
         		<div className="row top40 desktop-only">
+          
             {postsData &&
           			<div id="news-slider" className="owl-carousel">
                   <div className='owl-wrapper-outer'>
@@ -497,9 +499,11 @@ let date = dat.substring(6);
                           <div key={index} className="owl-item">
                             <div className='item'>
                             <div className="news_item bottom40">
-                                    <div className="image">
+                                    <div className={post?.featured_media?"image":"image no-image"}>
+                                     {post?.featured_media && 
                                       <img src={post?.featured_media && getImageUrl(post?.featured_media).toString()} alt="listin" className="img-fluid" />
-                                    </div>
+                                     }
+                                      </div>
                                     <div className="news_content">
                                       <div className="news_text">
                                       
@@ -512,7 +516,7 @@ let date = dat.substring(6);
                                               return(<span key={index}>, {getCatnameById(cat)}</span>)
                                               
                                              } 
-                                        }) } <span className="bullet-circle">•</span> {post?.date} </p>
+                                        }) } <span className="bullet-circle">•</span> {post?.date? dayjs(post?.date).format('MMMM DD, YYYY') :""} </p>
                                         
                                         <h3>
                                           <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
@@ -565,7 +569,7 @@ let date = dat.substring(6);
                                               return(<span key={ind}>, {getCatnameById(cat)}</span>)
                                               
                                              } 
-                                        }) }<span className="bullet-circle">•</span>{post?.date} </h5>
+                                        }) }<span className="bullet-circle">•</span>{post?.date? dayjs(post?.date).format('MMMM DD, YYYY') :""} </h5>
                   <h3>
                   <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
                   </h3>
