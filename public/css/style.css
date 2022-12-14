@@ -513,6 +513,10 @@ p {
 .AsideCards p {
   color: #ffffff;
 }
+.image.no-image {
+  font-size: 0px;
+  display: none !important;
+}
 .AsideCards {
   padding: 20px;
 }

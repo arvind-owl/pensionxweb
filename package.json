@@ -30,6 +30,7 @@
 		"@pantheon-systems/wordpress-kit": "2.8.0",
 		"@tailwindcss/typography": "^0.5.7",
 		"axios": "^1.2.0",
+		"dayjs": "^1.11.7",
 		"dotenv": "^16.0.2",
 		"flag-icons": "^6.6.6",
 		"next": "^12.3.1",
