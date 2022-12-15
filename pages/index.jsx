@@ -4,6 +4,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import dayjs from 'dayjs';
+import Head from "next/head";
 import Layout from '../components/layout';
 import Link from 'next/link';
 import { getFooterMenu,getHeaderMenu } from '../lib/Menus';
@@ -402,9 +403,16 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-
+console.log(banner?.yoast_head);
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
+     <head dangerouslySetInnerHTML={{
+                __html: banner?.yoast_head,
+              }} />
+      
+       
+      
+      
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
       			<div className="container">
         			<div className="row">

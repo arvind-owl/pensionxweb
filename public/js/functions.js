@@ -4,7 +4,14 @@ $(window).on("load", function() {
     "use strict";
     $(".loader").fadeOut(800);
 });
-
+$(window).scroll(function() {  
+    var scroll = $(window).scrollTop();
+    if (scroll >= 50) {
+     $(".min-h-screen.max-h-screen.min-w-screen.max-w-screen.flex.flex-col").addClass("darkHeader");
+    } else {
+     $(".min-h-screen.max-h-screen.min-w-screen.max-w-screen.flex.flex-col").removeClass("darkHeader");
+    }
+   });
 jQuery(function($) {
     "use strict";
 

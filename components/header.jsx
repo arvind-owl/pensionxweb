@@ -1,11 +1,13 @@
 import axios from "axios";
 import Link from 'next/link';
+
+import dayjs from 'dayjs';
 import React, { useState, useEffect,useRef } from "react";
 export default function Header({ children, headerMenuItems }) {
     const [headerItem, setHeaderItem] = useState([]);
     const [siteLogo, setSiteLogo] = useState([]);
     const [allImages, setAllImage]=useState([]);
-    
+    const [pensionPost, setPensionPost]=useState([]);
   const [reloadItem, setReloadItem] = useState(0);
   const [isAlreadyImages, setIsAlreadyImages]=useState([]);
     useEffect(() => {
@@ -22,8 +24,14 @@ export default function Header({ children, headerMenuItems }) {
           )
           .then((res) => setSiteLogo(res?.data));
       }, []);
-
-
+useEffect(() => {
+        axios
+          .get(
+            "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pension_calendar?per_page=1&order=desc&status=publish"
+          )
+          .then((res) => setPensionPost(res?.data));
+     
+      }, []);
       const  getImageUrl=(imageId)=> {
         let isAlready = false;
         isAlreadyImages && isAlreadyImages.length > 0 && isAlreadyImages.map((item)=>{
@@ -154,10 +162,10 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                         <li>
                             <i className="fa fa-calendar"></i>
                             <b>Pension Payment Calendar</b>
-                            <span className="check-mailed"> - Check Mailed <b>JULY 29</b>
+                            <span className="check-mailed"> - Check Mailed <b>{(pensionPost?.length > 0 && pensionPost[0].acf?.check_mail_date!='') ? dayjs(pensionPost[0].acf?.check_mail_date).format('MMMM DD') :""}</b>
                             </span>
                         </li>
-                        <li className="direct-deposit"> Direct Deposit <b>JULY 31</b>
+                        <li className="direct-deposit"> Direct Deposit <b>{(pensionPost?.length > 0 && pensionPost[0].acf?.direct_deposit_date!='') ? dayjs(pensionPost[0].acf?.direct_deposit_date).format('MMMM DD') :""}</b>
                         </li>
                         </ul>
                     </div>

@@ -4506,3 +4506,12 @@ section#work-area\ padding {
     background-position: 50%;
   }
   }
+  @media (min-width: 100px) and (max-width: 992px){
+    .darkHeader .registration-section {
+      top: 80px;
+    }
+    
+    section.registration-section {
+      top: 200px;
+    }
+    }
