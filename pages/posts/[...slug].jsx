@@ -3,6 +3,7 @@ import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
 import { IMAGE_URL } from '../../lib/constants';
 
+import Head from "next/head";
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import { getFooterMenu, getHeaderMenu } from '../../lib/Menus';
@@ -133,6 +134,9 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 }
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
+			 <head dangerouslySetInnerHTML={{
+                __html: pageContent[0]?.yoast_head,
+              }} />
 			<h1>{post.title}</h1>
 			<div dangerouslySetInnerHTML={createMarkup(post.content)} />
 			

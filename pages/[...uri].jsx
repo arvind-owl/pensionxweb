@@ -2,6 +2,8 @@ import { NextSeo } from 'next-seo';
 import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
 import Link from 'next/link';
+
+import Head from "next/head";
 import Layout from '../components/layout';
 import axios from "axios";
 import { getFooterMenu, getHeaderMenu } from '../lib/Menus';
@@ -186,7 +188,10 @@ function getMediaUrlById(id)
 
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
-			
+		
+	  <head dangerouslySetInnerHTML={{
+                __html: pageContent[0]?.yoast_head,
+              }} />
 			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroudSize:'cover', backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div className="container text-uppercase text-center">
 					<div className="main-title">
