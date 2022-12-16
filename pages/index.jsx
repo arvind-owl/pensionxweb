@@ -403,7 +403,7 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-console.log(banner?.yoast_head);
+
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
      <head dangerouslySetInnerHTML={{
