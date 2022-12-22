@@ -2077,8 +2077,18 @@ div#google_translate_element {
   border-radius: 30px 30px;
   opacity: 1;
 }
-
+#about_single .owl-prev, #about_single .owl-next {
+  border-radius: 4px;
+  font-size: 50px;
+  height: 42px;
+  line-height: 38px;
+  position: absolute;
+  text-align: center;
+  width: 45px;
+  top: 40%;
+}
 #listing_slider .owl-prev,
+#about_single .owl-prev,
 #property-listing-slider .owl-prev,
 #property-d-1 .owl-prev,
 #property-1-slider .owl-prev,
@@ -2092,6 +2102,7 @@ div#google_translate_element {
   height: 140px !important;
 }
 #listing_slider .owl-next,
+#about_single .owl-next,
 #property-listing-slider .owl-next,
 #property-1-slider .owl-next {
   right: -50px;
@@ -4501,3 +4512,6 @@ section#work-area\ padding {
       background: #fff;
       border-radius: 30px;
   }
+  div#about_single i {
+    font-size: 50px !important;
+}

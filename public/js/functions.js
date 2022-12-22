@@ -171,6 +171,7 @@ jQuery(function($) {
     //     itemsMobile: [479, 1],
     // });
     $("#about_single").owlCarousel({
+          
         autoPlay: 3000,
         items: 3,
         pagination: true,
@@ -183,6 +184,24 @@ jQuery(function($) {
         itemsTablet: [768, 1],
         itemsMobile: [479, 1],
     });
+
+    if($('.owl-prev').length)
+            {
+                var prev = $('.owl-prev');
+                prev.on('click', function()
+                {
+                    $("#about_single").trigger('prev.owl.carousel');
+                });
+            }
+
+            if($('.owl-next').length)
+            {
+                var next = $('.owl-next');
+                next.on('click', function()
+                {
+                    $("#about_single").trigger('next.owl.carousel');
+                });
+            }
     /* Cubeportfolio
     ============================================== */
     $("#projects").cubeportfolio({
