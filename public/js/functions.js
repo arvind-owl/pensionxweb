@@ -171,14 +171,13 @@ jQuery(function($) {
     //     itemsMobile: [479, 1],
     // });
     $("#about_single").owlCarousel({
-        autoPlay: false,
-        items: 8,
+        autoPlay: 3000,
+        items: 3,
         pagination: true,
         navigation: true,
-        navigationText: [
-            "<i class='fa fa-angle-left'></i>",
-            "<i class='fa fa-angle-right'></i>"
-        ],
+        navigationText: ["prev","next"],
+        stopOnHover:true,
+        responsive:true,
 		itemsDesktop: [5000, 1],
         itemsDesktopSmall: [1024, 1],
         itemsTablet: [768, 1],
