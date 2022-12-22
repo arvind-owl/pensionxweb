@@ -571,7 +571,13 @@ let date = dat.substring(6);
              })
            } */}
                      </div>
-                     
+                     <div class="owl-buttons">
+                      <div class="owl-prev">
+                      <i class="fa fa-angle-left"></i>
+                      </div>
+                      <div class="owl-next">
+                        <i class="fa fa-angle-right"></i>
+                        </div></div>
                      </div>
   
            </div>
