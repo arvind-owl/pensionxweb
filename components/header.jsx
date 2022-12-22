@@ -66,6 +66,8 @@ useEffect(() => {
       
         if(!isAlready)
             {
+              if(id!=null && id!=undefined && id!='')
+          {
               setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -90,6 +92,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
     setReloadItem(!reloadItem);
   }
 })
+          }
             }
   
 }

@@ -48,30 +48,34 @@ let isAlready = false;
   
     if(!isAlready)
         {
-          setIsAlreadyImages((arr) => [...arr,id]);
-axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
-
-if(res)
-{
-let pdata = res.data;
-let cont = pdata?.content?.rendered;
-pdata.content = cont;
-
-let excerpt = pdata?.excerpt?.rendered;
-pdata.excerpt = excerpt;
-
-let guid = pdata?.guid?.rendered;
-pdata.guid = guid;
-
-let title = pdata?.title?.rendered;
-pdata.title = title;
-
-let newImageArray = {'id':id,"Url":pdata.guid};
-
-setAllImage((arr) => [...arr,newImageArray]);
-setReloadItem(!reloadItem);
-}
-})
+          if(id!=null && id!=undefined && id!='')
+          {
+            setIsAlreadyImages((arr) => [...arr,id]);
+            axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
+            
+            if(res)
+            {
+            let pdata = res.data;
+            let cont = pdata?.content?.rendered;
+            pdata.content = cont;
+            
+            let excerpt = pdata?.excerpt?.rendered;
+            pdata.excerpt = excerpt;
+            
+            let guid = pdata?.guid?.rendered;
+            pdata.guid = guid;
+            
+            let title = pdata?.title?.rendered;
+            pdata.title = title;
+            
+            let newImageArray = {'id':id,"Url":pdata.guid};
+            
+            setAllImage((arr) => [...arr,newImageArray]);
+            setReloadItem(!reloadItem);
+            }
+            })
+          }
+          
         }
 
 }
