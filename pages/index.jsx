@@ -305,6 +305,23 @@ const  getEventCatslugById=(id)=>{
   }
   
 }
+
+const getEventCats=(data)=>{
+  let catNames='';
+    data && data.length>0 && data.map((cat,ind)=>{
+      let result = eventCategories.filter((ele)=>ele.id==cat);
+      if(result && result.length > 0 )
+      {
+        catNames = catNames +' '+ result[0].slug;
+      }
+      else
+      {
+        return '';
+      }
+  
+    })
+    return catNames;
+}
 const  getCovertMonthFormat=(dat)=>{
   const months = [
     "JAN", "FEB", 
@@ -367,6 +384,8 @@ const  getImageUrl=(imageId)=> {
       
         if(!isAlready)
             {
+              if(id!=null && id!=undefined && id!='')
+          {
               setIsAlreadyImages((arr) => [...arr,id]);
 axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((res)=>{
   
@@ -391,7 +410,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
     setReloadItem(!reloadItem);
   }
 })
-            }
+                }      }
   
 }
 
@@ -412,7 +431,7 @@ let date = dat.substring(6);
       
        
       
-      
+      <main className="mb-auto">
 			<div className="hero_slider padding-bottom-top-120" style={{backgroundImage:'url('+(banner?.acf?.banner_image && getImageUrl(banner?.acf?.banner_image))+')'}}>
       			<div className="container">
         			<div className="row">
@@ -496,23 +515,24 @@ let date = dat.substring(6);
 						
 					</div>
 				</div>
-        		<div className="row top40 desktop-only">
+        		<div className="row top40 desktop-only about-slider">
           
-            {postsData &&
-          			<div id="news-slider" className="owl-carousel">
-                  <div className='owl-wrapper-outer'>
-                    <div className='owl-wrapper' style={{width: (postsData.length*33.33)+'%',left: '0px', display:'flex', transition: 'all 800ms ease 0s', transform: 'translate3d('+translateVal+'%, 0px, 0px)'}}>
-                   {postsData.length > 0 && postsData.map((post,index)=>{
+             <div id="about_single" className="owl-carousel top30">
+             <div className='owl-wrapper-outer'>
+             <div className='owl-wrapper'>
+             {postsData && postsData.length > 0 && postsData.map((post,index)=>{
                     return(
-                          <div key={index} className="owl-item">
-                            <div className='item'>
-                            <div className="news_item bottom40">
-                                    <div className={post?.featured_media?"image":"image no-image"}>
+                   
+                     <div key={index}  className='owl-item' >
+                      <div className="item">
+                        <div className="content-right-md">
+                        
+                          <div className={post?.featured_media?"image":"image no-image"}>
                                      {post?.featured_media && 
                                       <img src={post?.featured_media && getImageUrl(post?.featured_media).toString()} alt="listin" className="img-fluid" />
                                      }
                                       </div>
-                                    <div className="news_content">
+                                      <div className="news_content">
                                       <div className="news_text">
                                       
                                         <p>{post?.categories.length > 0 && post?.categories.map((cat,index)=>{
@@ -531,34 +551,32 @@ let date = dat.substring(6);
                                         </h3>
                                       </div>
                                     </div>
-                                  </div>
-                                </div>
-                                </div>
-                    )
-
-                  })}
-            			</div>
-                  </div>
-                  <div className="owl-controls clickable">
-                    <div className="owl-pagination">
-                    {postsData.length > 0 && postsData.map((post,index)=>{
-                     return( <div key={index} className={currentSlide == index ?"active owl-page": "owl-page"} onClick={()=>{activeOwlSide(index)}}>
-                        <span ></span>
-                        </div>);
-                    })}
-                      
-                    </div>
-                  <div className="owl-buttons">
-                    <div className ={currentSlide == 0?"owl-prev disabled":"owl-prev"} onClick={()=>{ prevOwlSide(currentSlide)}}>
-                      <i className="fa fa-angle-left"></i>
-                    </div>
-                    <div className={currentSlide == postsData.length - 1 ?"owl-next disabled" : "owl-next"}  onClick={()=>{nextOwlSide(currentSlide)}}>
-                      <i className="fa fa-angle-right"></i>
-                    </div>
-                </div>
-              </div>
-                </div>
+                                      
+                         
+                        </div>
+                      </div>
+                      </div>
+                 );})
+}</div></div>
+           <div className="owl-controls clickable">
+             <div className="owl-pagination">
+             {/* {postsData && postsData.length > 0 && postsData.map((post,index)=>{
+            if(index%3==0 || index==0){
+                            return( 
+                              <div key={index} className="owl-page displayItem">
+                              <span className=""></span>
+                              </div>
+                            )
             }
+             })
+           } */}
+                     </div>
+                     
+                     </div>
+  
+           </div>
+          
+
         </div>
         <div className="row mobile-only">
         {
@@ -617,16 +635,7 @@ let date = dat.substring(6);
          
             {eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
 
-                  return( <div key={ind} className={event?.eventcategory.length > 0 && event?.eventcategory.map((cat,index)=>{
-                    if(index==0)
-                    {
-                     return(getEventCatslugById(cat))
-                    }else
-                    {
-                     return(getEventCatslugById(cat))
-                     
-                    } 
-               }) }>
+                  return( <div key={ind} className={getEventCats(event?.eventcategory.length > 0 && event?.eventcategory)+" cbp-item " }>
                   <div className="event-item clearfix">
                     <div className="event-image">
                       <div className="post-date">
@@ -726,6 +735,7 @@ return(
         </div>
       </div>
     </section>
+    </main>
 		</Layout>
 	);
 }

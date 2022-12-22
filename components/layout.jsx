@@ -18,7 +18,7 @@ export default function Layout({ children, footerMenu, headerMenu }) {
 	return (
 		<div className="min-h-screen max-h-screen min-w-screen max-w-screen flex flex-col">
 			<Header headerMenuItems={navItems} />
-			<main className="mb-auto">{children}</main>
+			<div>{children}</div>
 			<Footer footerMenuItems={footerMenuItems} />
 		</div>
 	)
