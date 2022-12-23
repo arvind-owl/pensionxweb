@@ -202,6 +202,17 @@ jQuery(function($) {
                     $("#about_single").trigger('next.owl.carousel');
                 });
             }
+
+            if($('.owl-page').length)
+            {
+                var next = $('.owl-page');
+                next.on('click', function()
+                {
+                    $("#about_single").trigger('next.owl.carousel');
+                    next.removeClass('active');
+                    $(this).addClass('active');
+                });
+            }
     /* Cubeportfolio
     ============================================== */
     $("#projects").cubeportfolio({
