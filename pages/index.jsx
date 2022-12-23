@@ -547,7 +547,7 @@ let date = dat.substring(6);
                                         }) } <span className="bullet-circle">•</span> {post?.date? dayjs(post?.date).format('MMMM DD, YYYY') :""} </p>
                                         
                                         <h3>
-                                          <Link passHref href={post.slug?post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
+                                          <Link passHref href={post.slug?"posts/"+post.slug:"#"}><a>{post.title?post.title:'#'}</a></Link>
                                         </h3>
                                       </div>
                                     </div>

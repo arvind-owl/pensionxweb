@@ -205,13 +205,23 @@ jQuery(function($) {
 
             if($('.owl-page').length)
             {
+                var prev = $('.owl-page.active');
+                prev.on('click', function()
+                {
+                    alert('Hi');
+                    $("#about_single").trigger('prev.owl.carousel');
+                });
+
                 var next = $('.owl-page');
                 next.on('click', function()
                 {
+                    alert('Hiiii');
                     $("#about_single").trigger('next.owl.carousel');
                     next.removeClass('active');
                     $(this).addClass('active');
                 });
+
+               
             }
     /* Cubeportfolio
     ============================================== */
