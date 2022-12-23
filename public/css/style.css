@@ -4515,3 +4515,8 @@ section#work-area\ padding {
   div#about_single i {
     font-size: 50px !important;
 }
+.postContent {
+  width: 90%;
+  float: left;
+  margin: 10px 5%;
+}
