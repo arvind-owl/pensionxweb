@@ -2,7 +2,7 @@ import { NextSeo } from 'next-seo';
 import { setEdgeHeader } from '@pantheon-systems/wordpress-kit';
 import { ContentWithImage } from '@pantheon-systems/nextjs-kit';
 import { IMAGE_URL } from '../../lib/constants';
-
+import axios from "axios";
 import Head from "next/head";
 import Layout from '../../components/layout';
 import Link from 'next/link';
