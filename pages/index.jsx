@@ -560,7 +560,7 @@ let date = dat.substring(6);
 }</div></div>
            <div className="owl-controls clickable">
              <div className="owl-pagination">
-             {/* {postsData && postsData.length > 0 && postsData.map((post,index)=>{
+             {postsData && postsData.length > 0 && postsData.map((post,index)=>{
             if(index%4==0 || index==0){
                             return( 
                               <div key={index} className="owl-page displayItem">
@@ -569,7 +569,7 @@ let date = dat.substring(6);
                             )
             }
              })
-           } */}
+           }
                      </div>
                      <div class="owl-buttons">
                       <div class="owl-prev">
