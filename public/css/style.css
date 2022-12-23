@@ -2732,6 +2732,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   padding: 20px 0 20px;
   float: left;
   width: 100%;
+  margin:20px 0px;
 }
 
 @media (min-width: 100px) and (max-width: 992px) {
@@ -4519,4 +4520,11 @@ section#work-area\ padding {
   width: 90%;
   float: left;
   margin: 10px 5%;
+}
+.postContent h1 {
+  font-size: 24px;
+  float: left;
+  width: 100%;
+  margin: 20px auto;
+  text-align: center;
 }
