@@ -139,7 +139,7 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
 			 <head dangerouslySetInnerHTML={{
                 __html: pageContent[0]?.yoast_head,
               }} />		
-			  <main className="mb-auto">  
+			  <main className="mb-auto postContent">  
 			<h1>{post.title}</h1>
 			<div dangerouslySetInnerHTML={createMarkup(post.content)} />
 			
