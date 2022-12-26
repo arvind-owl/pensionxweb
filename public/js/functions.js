@@ -185,44 +185,36 @@ jQuery(function($) {
         itemsMobile: [479, 1],
     });
 
-    if($('.owl-prev').length)
-            {
+    
                 var prev = $('.owl-prev');
                 prev.on('click', function()
                 {
                     $("#about_single").trigger('prev.owl.carousel');
                 });
-            }
+        
 
-            if($('.owl-next').length)
-            {
                 var next = $('.owl-next');
                 next.on('click', function()
                 {
                     $("#about_single").trigger('next.owl.carousel');
                 });
-            }
-
-            if($('.owl-page').length)
-            {
-                var prev = $('.owl-page.active');
-                prev.on('click', function()
-                {
-                    alert('Hi');
-                    $("#about_single").trigger('prev.owl.carousel');
-                });
+           
+           
+                // var prev = $('.owl-page.active');
+                // prev.on('click', function()
+                // {
+                //     $("#about_single").trigger('prev.owl.carousel');
+                // });
 
                 var next = $('.owl-page');
                 next.on('click', function()
                 {
-                    alert('Hiiii');
                     $("#about_single").trigger('next.owl.carousel');
-                    next.removeClass('active');
+                    $('.owl-page').removeClass('active');
                     $(this).addClass('active');
                 });
 
-               
-            }
+           
     /* Cubeportfolio
     ============================================== */
     $("#projects").cubeportfolio({

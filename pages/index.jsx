@@ -563,7 +563,7 @@ let date = dat.substring(6);
              {postsData && postsData.length > 0 && postsData.map((post,index)=>{
             if(index%4==0 || index==0){
                             return( 
-                              <div key={index} className="owl-page displayItem">
+                              <div key={index} className="owl-page">
                               <span className=""></span>
                               </div>
                             )
@@ -571,12 +571,12 @@ let date = dat.substring(6);
              })
            }
                      </div>
-                     <div class="owl-buttons">
-                      <div class="owl-prev">
-                      <i class="fa fa-angle-left"></i>
+                     <div className="owl-buttons">
+                      <div className="owl-prev">
+                      <i className="fa fa-angle-left"></i>
                       </div>
-                      <div class="owl-next">
-                        <i class="fa fa-angle-right"></i>
+                      <div className="owl-next">
+                        <i className="fa fa-angle-right"></i>
                         </div></div>
                      </div>
   
