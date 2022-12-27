@@ -422,7 +422,6 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
-
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
      <head dangerouslySetInnerHTML={{
@@ -516,7 +515,7 @@ let date = dat.substring(6);
 					</div>
 				</div>
         		<div className="row top40 desktop-only about-slider">
-          
+            
              <div id="about_single" className="owl-carousel top30">
              <div className='owl-wrapper-outer'>
              <div className='owl-wrapper'>
@@ -559,18 +558,7 @@ let date = dat.substring(6);
                  );})
 }</div></div>
            <div className="owl-controls clickable">
-             <div className="owl-pagination">
-             {/* {postsData && postsData.length > 0 && postsData.map((post,index)=>{
-            if(index%4==0 || index==0){
-                            return( 
-                              <div key={index} className="owl-page">
-                              <span className=""></span>
-                              </div>
-                            )
-            }
-             })
-           } */}
-                     </div>
+             
                      <div className="owl-buttons">
                       <div className="owl-prev">
                       <i className="fa fa-angle-left"></i>
@@ -579,7 +567,7 @@ let date = dat.substring(6);
                         <i className="fa fa-angle-right"></i>
                         </div></div>
                      </div>
-  
+
            </div>
           
 

@@ -4,6 +4,7 @@ $(window).on("load", function() {
     "use strict";
     $(".loader").fadeOut(800);
 });
+
 $(window).scroll(function() {  
     var scroll = $(window).scrollTop();
     if (scroll >= 50) {
@@ -99,6 +100,9 @@ jQuery(function($) {
     /* Left Menu
     ============================================== */
     $(document).ready(function() {
+        
+
+
         var lastId, $targetLink = $('.block-menu a[href^="#"]', document.body);
         $($targetLink, document.body).on('click', function(e) {
             $targetLink.removeClass('active');
@@ -141,35 +145,7 @@ jQuery(function($) {
 
     /* Owl all sliders
     ============================================== */
-    // $("#news-slider, #nav_slider").owlCarousel({
-    //     autoPlay: 3000,
-    //     items: 3,
-    //     pagination: true,
-    //     navigation: true,
-    //     navigationText: [
-    //         "<i class='fa fa-angle-left'></i>",
-    //         "<i class='fa fa-angle-right'></i>"
-    //     ],
-	// 	itemsDesktop: [1920, 3],
-    //     itemsDesktopSmall: [1024, 2],
-    //     itemsTablet: [768, 2],
-    //     itemsMobile: [479, 1],
-    // });
-    // $("#news_slider").owlCarousel({
-    //     autoPlay: 3000,
-    //     items: 3,
-    //     pagination: true,
-    //     navigation: true,
-    //     navigationText: [
-    //         "<i class='fa fa-angle-left'></i>",
-    //         "<i class='fa fa-angle-right'></i>"
-    //     ],
-	// 	itemsDesktop: [5000, 1],
-	// 	itemsDesktop: [1250, 1],
-    //     itemsDesktopSmall: [1024, 1],
-    //     itemsTablet: [768, 1],
-    //     itemsMobile: [479, 1],
-    // });
+    
     $("#about_single").owlCarousel({
           
         autoPlay: 3000,
@@ -189,6 +165,7 @@ jQuery(function($) {
                 var prev = $('.owl-prev');
                 prev.on('click', function()
                 {
+                  
                     $("#about_single").trigger('prev.owl.carousel');
                 });
         
@@ -196,24 +173,12 @@ jQuery(function($) {
                 var next = $('.owl-next');
                 next.on('click', function()
                 {
+                  
                     $("#about_single").trigger('next.owl.carousel');
                 });
            
            
-                // var prev = $('.owl-page.active');
-                // prev.on('click', function()
-                // {
-                //     $("#about_single").trigger('prev.owl.carousel');
-                // });
-
-                var next = $('.owl-page');
-                next.on('click', function()
-                {
-                    $("#about_single").trigger('next.owl.carousel');
-                    $('.owl-page').removeClass('active');
-                    $(this).addClass('active');
-                });
-
+                
            
     /* Cubeportfolio
     ============================================== */
