@@ -2747,7 +2747,45 @@ nav.navbar.bootsnav ul.nav > li > a {
   width: 100%;
   line-height: 1;
 }
+#about_single .owl-pagination i.fa.fa-angle-right {
+  position: absolute;
+  right: -80px;
+  top:200px;
+}
+#about_single .owl-pagination i.fa.fa-angle-left {
+  left: 0% !important;
+  top: 200px;
+  position: absolute;
+}
+.owl-pagination {
+  position: absolute;
+  justify-content: center;
+  top: -46px !important;
+  left: -46px !important;
+  width: 100% !important;
+  
+}
+.owl-theme .owl-controls .owl-page::before {
+  background: transparent;
+  border-radius: 50px;
+  display: block;
+  height: 10px;
+  margin: 0 2px;
+  width: 10px;
+  border: 1px solid #292929;
+  opacity: 1;
+}
 
+.owl-theme .owl-controls .owl-page.active::before {
+  background: #292929;
+  border-radius: 50px;
+  display: block;
+  height: 10px;
+  margin: 0 2px;
+  width: 10px;
+  border: 1px solid #292929;
+  opacity: 1;
+}
 /* ---- ABOUT US Page 2 --- */
 .our-mission-box-img img {
   width: 100%;
