@@ -209,9 +209,19 @@ jQuery(function($) {
                 var next = $('.owl-page');
                 next.on('click', function()
                 {
-                    $("#about_single").trigger('next.owl.carousel');
-                    $('.owl-page').removeClass('active');
-                    $(this).addClass('active');
+                    if($(this).hasClass(active))
+                    {
+                        $("#about_single").trigger('prev.owl.carousel');
+                        $('.owl-page').removeClass('active');
+                        $(this).addClass('active');
+                    }
+                    else
+                    {
+                        $("#about_single").trigger('next.owl.carousel');
+                        $('.owl-page').removeClass('active');
+                        $(this).addClass('active');
+                    }
+                    
                 });
 
            
