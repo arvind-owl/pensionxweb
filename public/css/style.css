@@ -2771,6 +2771,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   display: block;
   height: 10px;
   margin: 0 2px;
+  content: "";
   width: 10px;
   border: 1px solid #292929;
   opacity: 1;
@@ -2778,13 +2779,6 @@ nav.navbar.bootsnav ul.nav > li > a {
 
 .owl-theme .owl-controls .owl-page.active::before {
   background: #292929;
-  border-radius: 50px;
-  display: block;
-  height: 10px;
-  margin: 0 2px;
-  width: 10px;
-  border: 1px solid #292929;
-  opacity: 1;
 }
 /* ---- ABOUT US Page 2 --- */
 .our-mission-box-img img {
