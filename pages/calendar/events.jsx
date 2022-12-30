@@ -127,10 +127,6 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
                 return returnFormat;
 
         }
-       
-        const CustomEventContainer = () => props => {
-            return <CustomEvent title={props.title} linkhref={props.event.href} />;
-        }
         
         const CustomEvent = React.memo((props) => {
             return (
@@ -160,7 +156,7 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
                 style={{ height: 500 }}
                 onShowMore={(myEventsList, date) => this.setState({ showModal: true, myEventsList })}
                 components={{
-                    event: CustomEventContainer()
+                    event: (props)=>{ return(<CustomEvent title={props.title} linkhref={props.event.href} />);}
                 }}
                 />
             </div>

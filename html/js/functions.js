@@ -140,8 +140,8 @@ jQuery(function($) {
         pagination: true,
         navigation: true,
         navigationText: [
-            "<i class='fa fa-angle-left'></i>",
-            "<i class='fa fa-angle-right'></i>"
+            "<i className='fa fa-angle-left'></i>",
+            "<i className='fa fa-angle-right'></i>"
         ],
 		itemsDesktop: [1920, 3],
         itemsDesktopSmall: [1024, 2],
