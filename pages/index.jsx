@@ -658,9 +658,9 @@ let date = dat.substring(6);
 
         </div>
         <div className="col-lg-12 text-center">
-        <ul class="upcoming-events">
-          <li><i class="fa fa-file"></i> Most Recent Agenda</li>
-          <li><a href="/calendar/events" ><i class="fa fa-calendar"></i> Full Event Calendar</a></li>
+        <ul className="upcoming-events">
+          <li><i className="fa fa-file"></i> Most Recent Agenda</li>
+          <li><Link href="/calendar/events" ><a><i className="fa fa-calendar"></i> Full Event Calendar</a></Link></li>
         </ul>
         </div>
       </div>
