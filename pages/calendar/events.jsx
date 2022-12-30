@@ -5,7 +5,6 @@ import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import Head from "next/head";
-import CustomEvent from './customEvent';
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import { Button} from 'react-bootstrap';
@@ -129,7 +128,13 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
 
         }
         
-      
+        function CustomEvent(props) {
+          return (
+              <div>
+                  <Link href={props && props.linkhref} ><a>{props.title}</a></Link>
+              </div>
+          );
+      }
       
     return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
