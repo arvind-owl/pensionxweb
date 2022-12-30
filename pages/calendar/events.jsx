@@ -5,6 +5,7 @@ import React, { useState, useEffect } from "react";
 import Image from 'next/image';
 import dayjs from 'dayjs';
 import Head from "next/head";
+import CustomEvent from './customEvent';
 import Layout from '../../components/layout';
 import Link from 'next/link';
 import { Button} from 'react-bootstrap';
@@ -82,7 +83,7 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
         axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/pages?slug=event-calendar").then((res) => setBanner(res?.data[0]));
       
         }, []);
-        console.log(eventPosts);
+        
         useEffect(()=>{
             eventPosts && eventPosts.length > 0 && eventPosts.map((event,ind)=>{
                 let isAlready = false;
@@ -128,13 +129,7 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
 
         }
         
-        const CustomEvent = React.memo((props) => {
-            return (
-                <div>
-                    <Link href={props && props.linkhref} ><a>{props.title}</a></Link>
-                </div>
-            );
-        })
+      
       
     return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
