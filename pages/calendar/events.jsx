@@ -117,7 +117,7 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
            
             let mon = dat.substring(4, 6);
             
-                let month = mon-1;
+                let month = mon;
             
                 let date = dat.substring(6);
                 let year = dat.substring(0,4);
