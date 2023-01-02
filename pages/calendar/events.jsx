@@ -142,9 +142,9 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
                 __html: banner?.yoast_head,
               }} />
       
-      <main className="mb-auto">
+      <main className="mb-auto container">
         <div className='row m-5'>
-            <div className='col-md-12'>
+            <div className='col-md-8 col-md-offset-2'>
               <div className="myCustomHeight">
                 <Calendar
                 localizer={localizer}
