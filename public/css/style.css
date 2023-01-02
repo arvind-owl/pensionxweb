@@ -4562,14 +4562,14 @@ section#work-area\ padding {
   }
   .eventDateTimeDetails {
     float: none;
-    margin: 10px auto;
+    margin: 10px auto !important;
     width: 400px;
 }
 .eventDateTimeDetails .main-title {
  
   padding: 30px 30px;
-  text-align: center;
-  margin: 50px 0;
+  text-align: left;
+  margin: 0px auto 0px 30px;
   width: 100%;
 }
   div#about_single i {
@@ -4583,12 +4583,34 @@ section#work-area\ padding {
 .postContent h1 {
     font-size: 35px !important;
     font-weight: 700;
-    margin-top: 80px !important;
-    margin-bottom: 30px !important;
+    margin-top: 30px !important;
+    margin-bottom: 10px !important;
     letter-spacing: 0.56px;
     line-height: 46px;
     padding: 20px;
     color: #000;
+}
+.rbc-event-content a {
+  width: 100%;
+  white-space: break-spaces;
+  font-size: 11px;
+  line-height: 19px !important;
+  display: flex;
+}
+.rbc-event {
+  border-radius: 0px !important;
+}
+.rbc-event:hover {
+  border: 1px solid blue;
+  background: transparent;
+  color: blue;
+}
+h1.calendarPageTitle {
+  width: 100%;
+  clear: both;
+  margin: 50px auto;
+  text-align: center;
+  font-size: 35px;
 }
 .postContent p {
   text-align: center;

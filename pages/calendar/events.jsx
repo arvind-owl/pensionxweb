@@ -145,6 +145,7 @@ export default function EventCalendar({ menuItems, headerMenuItems }) {
       <main className="mb-auto container">
         <div className='row m-5'>
             <div className='col-md-8 col-md-offset-2'>
+              <h1 className='calendarPageTitle'>Full Events Calendar</h1>
               <div className="myCustomHeight">
                 <Calendar
                 localizer={localizer}
