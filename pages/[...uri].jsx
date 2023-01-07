@@ -282,6 +282,13 @@ function getMediaUrlById(id)
 :''}               
      </div>
 	 </div>
+	 <section className="life-events-img">
+      <div className="container-fluid">
+        <div className="row">
+          <img className="img-fluid" src={pageContent[0]?.acf?.life_event_image && getImageUrl(pageContent[0]?.acf?.life_event_image).toString()} alt="" />
+        </div>
+      </div>
+    </section>
 	 </main>
 </Layout>
 	)

@@ -2580,7 +2580,7 @@ nav.navbar.bootsnav ul.nav > li > a {
   margin: 120px 0; */
   
   padding: 30px 150px 30px 0;
-  text-align: center;
+  text-align: left;
   margin: 220px -15px 20px;
   position: relative;
 }
@@ -2929,7 +2929,7 @@ section#contact {
   margin: 50px 0;
   padding-left:50px;
 }
-.mb-auto .default{
+.mb-auto > .page-content > .default{
   margin: 50px 0;
   padding-left:50px;
   padding-right: 50px;
