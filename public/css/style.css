@@ -298,13 +298,13 @@ h6 {
   color: #1f1f1f;
 }
 h2 {
-  font-size: 32px !important;
+  font-size: 32px;
 }
 h3 {
-  font-size: 24px !important;
+  font-size: 24px ;
 }
 h4 {
-  font-size: 18px !important;
+  font-size: 18px ;
 }
 h2,
 h3,
@@ -313,7 +313,7 @@ h4 {
   margin: 0;
 }
 h5 {
-  font-size: 16px !important;
+  font-size: 16px ;
   margin: 0;
 }
  .how-we-work-section img {
@@ -1851,25 +1851,21 @@ a:hover {
 .address {
   color: #292929 !important;
   text-align: left;
-  font: normal normal 200 17px/28px Libre Franklin;
-  letter-spacing: 0px;
-  opacity: 1;
+  font: normal normal normal 16px/28px Cabin;
 }
 
 .office-timing {
   color: #292929 !important;
   text-align: left;
-  font: normal normal 200 17px/40px Libre Franklin;
-  letter-spacing: 0px;
-  opacity: 0.88;
+  font: normal normal normal 16px/28px Cabin;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .tel-nio {
   color: #292929 !important;
   text-align: left;
-  font: normal normal 200 17px/28px Libre Franklin;
-  letter-spacing: 0px;
-  opacity: 0.88;
+  font: normal normal normal 16px/28px Cabin;
 }
 
 .widget ul.list li,
@@ -2218,8 +2214,8 @@ div#google_translate_element {
   overflow: hidden;
   position: relative;
   margin-right: 30px;
-  width: 102px;
-  height: 102px;
+  width: 90px;
+  height: 90px;
 }
 
 .event-item .event-image .post-date {
@@ -2233,13 +2229,13 @@ div#google_translate_element {
   background: #394d6b 0% 0% no-repeat padding-box;
   /* border-radius: 6px 0px 0px 6px; */
   opacity: 1;
-  width: 102px;
-  height: 102px;
+  width: 90px;
+  height: 90px;
 }
 
 .event-item .event-image .post-date .date {
   text-align: center;
-  font: normal normal bold 49px Cabin;
+  font: normal normal bold 40px Cabin;
   letter-spacing: 0.61px;
   color: #ffffff;
 }
@@ -2254,7 +2250,7 @@ div#google_translate_element {
 
 .event-item .event-content {
   padding: 20px 0px 0 0;
-  height: 102px;
+  height: 90px;
 }
 
 .event-item .event-content .event-title {
@@ -4180,7 +4176,7 @@ section#work-area\ padding {
   section.life-events {
     padding: 20px 20px;
   }
-  .fa-ul {
+  .life-events ul {
     padding-left: 0;
     margin-left: 0px;
     list-style-type: none;
@@ -4214,7 +4210,7 @@ section#work-area\ padding {
 
   .event-item .event-content {
     padding: 10px 0px 0 0;
-    height: 102px;
+    height: 90px;
   }
 
   .upcoming-events li {
