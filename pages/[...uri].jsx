@@ -206,6 +206,7 @@ function getMediaUrlById(id)
 					</div>
 				</div>
 				</div>
+			<div className="page-content">	
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') && 
 			
 			<div className="col-lg-2  leftSidebarSection">
@@ -280,6 +281,7 @@ function getMediaUrlById(id)
 
 :''}               
      </div>
+	 </div>
 	 </main>
 </Layout>
 	)
