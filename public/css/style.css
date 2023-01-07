@@ -1679,6 +1679,9 @@ nav.navbar.bootsnav
 .container {
   width: 90% !important;
 }
+main > .page-content {
+  width: 90% !important;
+}
 
 .header-top-bar {
   background-color: #e9e9ee;
