@@ -82,7 +82,7 @@ let isAlready = false;
 
     return (
         <>
-        <section id="contact" className="bg-color-blue">
+      <section id="contact" className="bg-color-blue">
       <div className="container">
         <div className="row">
           <div className="col-md-4 col-sm-4 col-xs-12 text-center">
@@ -135,16 +135,16 @@ let isAlready = false;
                     <div className="col-sm-6 col-md-5">
                         <div className="widget dark">
                         <img className="img-fluid mb-20 logo" src={getImageUrl(siteLogo.site_logo).toString()} />
-                        <p className="address">2275 Rio Bonito Way UNIT 200, San <br/> Diego, CA 92108 </p>
+                        <p className="address">2275 Rio Bonito Way UNIT 200, <br/>San Diego, CA 92108</p>
                         <p className="office-timing">M-F 8:00 am - 5:00pm</p>
-                        <p className="tel-nio">(619) 515-6800 <br/> TTY: (888) 888-8888 </p>
+                        <p className="tel-nio"><a href="tel:(619) 515-6800">(619) 515-6800</a></p>
                         </div>
                     </div>
                    
                     <div className="col-sm-6 col-md-4 mobile-only">
                         <div className="widget dark">
-                        <h4 className="widget-title">Didn&apos;t find what you were looking for?</h4>
-                        <h3>Leave us Feedback</h3>
+                        <p className="widget-title">Didn&apos;t find what you were looking for?</p>
+                        <h4><Link passHref href="/contact"><a>Leave us Feedback</a></Link></h4>
                         </div>
                     </div>
                    
@@ -161,10 +161,10 @@ let isAlready = false;
                     </div>
                     <div className="col-sm-6 col-md-4 desktop-only">
                         <div className="widget dark">
-                        <h4 className="widget-title">Didn&apos;t find what you were looking for?</h4>
-                        <h3>
+                        <p className="widget-title">Didn&apos;t find what you were looking for?</p>
+                        <h4>
                             <Link passHref href="/contact"><a>Leave us Feedback</a></Link>
-                        </h3>
+                        </h4>
                         </div>
                     </div>
                     </div>
