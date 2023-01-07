@@ -484,6 +484,7 @@ let date = dat.substring(6);
 				<div className="col-lg-4 align-self-center">
 					<div className="retire-inner">
 						<div className="section-title m-0">
+              
             <h2  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.how_much_title,
               }} />
@@ -505,9 +506,8 @@ let date = dat.substring(6);
 			<div className="container">
 				<div className="row">
 					<div className="col-xs-12 text-center mb-5">
-          <p  dangerouslySetInnerHTML={{
-                __html: banner?.acf?.stay_informed_title,
-              }} />
+          <h2>{banner?.acf?.stay_informed_title}</h2>
+          
               <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.stay_informed_content,
               }} />
