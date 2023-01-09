@@ -63,11 +63,33 @@ export default function PostTemplate({ menuItems, post, headerMenuItems }) {
 	},[post]);
 	function getUrlSlug(url)
 	{
-	  let slug='';
-	  let urlArray = url.split('/');
-	  let urlLength = urlArray.length;
-	  slug = urlArray[urlLength - 2];
-	  return slug;
+	let slug='';
+	let urlArray = url.split('//');
+	
+	
+	let urlNewArray = urlArray[1].split('/');
+	let urlLength = urlNewArray.length;
+	if(urlLength > 3)
+	{
+	  slug = '';
+	  urlNewArray.map((item,index)=>{
+		let newindex = index+2;
+	  
+		if(newindex < urlLength)
+		{
+		
+		  slug = '/'+urlNewArray[urlLength - newindex]+slug;
+	  
+		}
+		
+	  })
+	  
+	}
+	else{
+		slug = urlNewArray[urlLength - 2];
+	}
+	
+	return slug;
 	}
 	function createMarkup(html) {
 		    return { __html: html };
