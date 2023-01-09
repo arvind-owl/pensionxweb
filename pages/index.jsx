@@ -211,7 +211,7 @@ else
     {
       axios
       .get(
-        "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/posts?per_page="+banner?.acf?.stay_informed_no_of_posts+"&order=desc&status=publish&categories="+categoriesIds
+        "https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/posts?per_page=6&order=desc&status=publish&categories="+categoriesIds
       )
       .then((res) => { 
         let allupdate = false;
@@ -422,6 +422,7 @@ let date = dat.substring(6);
 
   return dateFormat;
 }
+
 	return (
 		<Layout footerMenu={menuItems} headerMenu={headerNewItem}>
      <head dangerouslySetInnerHTML={{
@@ -439,6 +440,26 @@ let date = dat.substring(6);
             				<p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.banner_description,
               }} />
+
+<ul className="dropdown-anchor bannerMenu" role="menubar" aria-orientation="horizontal">
+  <li role="none" className="menu--has-submenu"><a role="menuitem" aria-haspopup="menu" aria-controls="submenu" aria-expanded="false" tabindex="0" id="feature-dropdown-menu__toggle" className="menu__toggle">{banner?.acf?.banner_menus}</a>
+  <button type="button" className="menu__icon bannerMenu_btn" aria-controls="submenu" tabindex="-1" aria-expanded="false">Toggle menu</button>
+  {banner?.acf?.banner_menu_items && banner?.acf?.banner_menu_items.length > 0 ? 
+                <ul className="dropdown bannerMenu_sub" id="submenu" role="menu" aria-orientation="vertical" aria-label={banner?.acf?.banner_menus}>
+                  {banner?.acf?.banner_menu_items && banner?.acf?.banner_menu_items.map((item,index)=>{
+                      return(
+                  <li key={index} role="none">
+                    <Link href={item.item_link.url} target={item.item_link.target} className="external" ><a role="menuitem" target={item.item_link.target} className="external">{item.item_name}</a></Link>
+                    </li>
+                  
+                      );
+                  })
+                   }
+                  
+                  </ul>
+                :''}
+</li></ul>
+              
           				</div>
         			</div>
       			</div>
@@ -460,13 +481,14 @@ let date = dat.substring(6);
         			<div className="row justify-content-center">
                 {banner?.acf?.get_started_content && banner?.acf?.get_started_content.length > 0 && banner?.acf?.get_started_content.map((ele,i)=>{
                     return (<div key={i} className="col-md-4 col-lg-3 col-xs-6 text-center">
+                      <Link href={ele?.link ? ele?.link?.url :"#"} target={ele?.link?.target}>
             				<div className="get-started-content top40">
               					<img className="img-fluid default" src={ele?.image && getImageUrl(ele?.image).toString()} alt="image" />
               					<img className="img-fluid hover" src={ele?.hover_image && getImageUrl(ele?.hover_image).toString()} alt="image" />
                         <h4  dangerouslySetInnerHTML={{
                 __html: ele?.title,
               }} />
-            				</div>
+            				</div></Link>
           				</div>)
                 })}
           				
@@ -524,7 +546,7 @@ let date = dat.substring(6);
                    
                      <div key={index}  className='owl-item' >
                       <div className="item">
-                        <div className="content-right-md">
+                        <div className="news_item bottom40 content-right-md">
                         
                           <div className={post?.featured_media?"image":"image no-image"}>
                                      {post?.featured_media && 

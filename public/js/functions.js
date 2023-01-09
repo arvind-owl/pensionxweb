@@ -1,9 +1,11 @@
+
 /* Loader
 ============================================== */
 $(window).on("load", function() {
     "use strict";
     $(".loader").fadeOut(800);
 });
+
 
 $(window).scroll(function() {  
     var scroll = $(window).scrollTop();
@@ -100,8 +102,18 @@ jQuery(function($) {
     /* Left Menu
     ============================================== */
     $(document).ready(function() {
-        
-
+       
+        $('.bannerMenu li #feature-dropdown-menu__toggle , .bannerMenu li .bannerMenu_btn').on('click',function(){
+          
+                if($(this).closest('li').hasClass('expanded'))
+                {
+                    $(this).closest('li').removeClass('expanded');
+                }
+                else
+                {
+                    $(this).closest('li').addClass('expanded');
+                }
+            });
 
         var lastId, $targetLink = $('.block-menu a[href^="#"]', document.body);
         $($targetLink, document.body).on('click', function(e) {

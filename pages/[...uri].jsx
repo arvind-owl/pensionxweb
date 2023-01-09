@@ -193,6 +193,7 @@ function getMediaUrlById(id)
                 __html: pageContent[0]?.yoast_head,
               }} />
 			<main className="mb-auto">
+				{pageContent[0]?.acf?.header_background_image ?
 			<div className="page-title page-main-section" id={pageContent[0]?.acf?.header_background_image} style={{backgroudSize:'cover', backgroundImage: 'url('+getImageUrl(pageContent[0]?.acf?.header_background_image)+')'}}>
 				<div className="container text-uppercase text-center">
 					<div className="main-title">
@@ -206,6 +207,7 @@ function getMediaUrlById(id)
 					</div>
 				</div>
 				</div>
+				:""}
 			<div className="page-content">	
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') && 
 			
@@ -252,7 +254,15 @@ function getMediaUrlById(id)
 			}
     
 	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? '  left_sidebar   px-xl-5 px-3 col-lg-10': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? ' right_sidebar   px-xl-5 px-3 col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' leftright_sidebar   px-xl-5 px-3 col-lg-10':'default  px-xl-5 px-3 col-xl-12 col-lg-12'}>
-	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default'} dangerouslySetInnerHTML={createMarkup(page.content)} />
+	
+	<div className={pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' ? 'col-lg-12': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right'? 'col-lg-9': pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright'? ' col-lg-9':'default'} >
+		<div dangerouslySetInnerHTML={createMarkup(page.content)} />
+
+	<div>
+
+	</div>
+
+	</div>
 
 {(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'right' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') ? 
 <div className="col-xl-3 col-lg-3 rightSidebar">
