@@ -13,7 +13,7 @@ import Script from 'next/script';
 function MyApp({ Component, pageProps }) {
 	return (
 		<>
-		 
+		
 			<Component {...pageProps} />
 			<Script src="../../js/jquery-3.2.1.min.js" strategy="beforeInteractive" />
 		  <Script src="../../js/bootstrap.min.js" strategy="beforeInteractive" />

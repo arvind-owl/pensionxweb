@@ -109,7 +109,19 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
             let urlLength = urlNewArray.length;
             if(urlLength > 3)
             {
-                slug = urlNewArray[urlLength - 3]+'/'+urlNewArray[urlLength - 2];
+              slug = '';
+              urlNewArray.map((item,index)=>{
+                let newindex = index+2;
+              
+                if(newindex < urlLength)
+                {
+                
+                  slug = '/'+urlNewArray[urlLength - newindex]+slug;
+              
+                }
+                
+              })
+              
             }
             else{
                 slug = urlNewArray[urlLength - 2];
@@ -152,7 +164,6 @@ axios.get("https://dev-sdcera.pantheonsite.io/wp-json/wp/v2/media/"+id).then((re
                 document.body.appendChild(addScript);
                 window.googleTranslateElementInit = googleTranslateElementInit;
               }, []);
-
     return (
         <>
           
