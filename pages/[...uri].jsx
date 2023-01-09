@@ -208,6 +208,7 @@ function getMediaUrlById(id)
 				</div>
 				</div>
 				:""}
+			<div className="page-content">	
 			{(pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'left' || pageContent && pageContent.length > 0 && pageContent[0]?.acf?.page_template == 'leftright') && 
 			
 			<div className="col-lg-2  leftSidebarSection">
@@ -290,6 +291,14 @@ function getMediaUrlById(id)
 
 :''}               
      </div>
+	 </div>
+	 <section className="life-events-img">
+      <div className="container-fluid">
+        <div className="row">
+          <img className="img-fluid" src={pageContent[0]?.acf?.life_event_image && getImageUrl(pageContent[0]?.acf?.life_event_image).toString()} alt="" />
+        </div>
+      </div>
+    </section>
 	 </main>
 </Layout>
 	)

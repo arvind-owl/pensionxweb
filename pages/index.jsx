@@ -468,7 +468,7 @@ let date = dat.substring(6);
       			<div className="container">
         			<div className="row">
           				<div className="col-xs-12 text-center">
-                  <p  dangerouslySetInnerHTML={{
+                  <h2  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.get_started_title,
               }} />
               
@@ -485,7 +485,7 @@ let date = dat.substring(6);
             				<div className="get-started-content top40">
               					<img className="img-fluid default" src={ele?.image && getImageUrl(ele?.image).toString()} alt="image" />
               					<img className="img-fluid hover" src={ele?.hover_image && getImageUrl(ele?.hover_image).toString()} alt="image" />
-                        <p  dangerouslySetInnerHTML={{
+                        <h4  dangerouslySetInnerHTML={{
                 __html: ele?.title,
               }} />
             				</div></Link>
@@ -506,7 +506,8 @@ let date = dat.substring(6);
 				<div className="col-lg-4 align-self-center">
 					<div className="retire-inner">
 						<div className="section-title m-0">
-            <p  dangerouslySetInnerHTML={{
+              
+            <h2  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.how_much_title,
               }} />
               <p  dangerouslySetInnerHTML={{
@@ -527,9 +528,8 @@ let date = dat.substring(6);
 			<div className="container">
 				<div className="row">
 					<div className="col-xs-12 text-center mb-5">
-          <p  dangerouslySetInnerHTML={{
-                __html: banner?.acf?.stay_informed_title,
-              }} />
+          <h2>{banner?.acf?.stay_informed_title}</h2>
+          
               <p  dangerouslySetInnerHTML={{
                 __html: banner?.acf?.stay_informed_content,
               }} />
